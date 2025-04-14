@@ -1,11 +1,13 @@
 public class BootstrapState : IState
 {
     private readonly IGameStateMachine _gameStateMachine;
+    private readonly IAssetProvider _assetProvider;
     private readonly SceneLoader _sceneLoader;
 
-    public BootstrapState(IGameStateMachine gameStateMachine, SceneLoader sceneLoader)
+    public BootstrapState(IGameStateMachine gameStateMachine, IAssetProvider assetProvider, SceneLoader sceneLoader)
     {
         _gameStateMachine = gameStateMachine;
+        _assetProvider = assetProvider;
         _sceneLoader = sceneLoader;
     }
 
@@ -14,6 +16,9 @@ public class BootstrapState : IState
     
     public void Exit() { }
 
-    private void OnInitialSceneLoaded() =>
+    private void OnInitialSceneLoaded()
+    {
+        _assetProvider.Initialize();
         _gameStateMachine.Enter<LoadProgressState>();
+    }
 }

@@ -4,8 +4,16 @@ public class InfrastructureInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
+        BindAssetProvider();
         BindSceneLoader();
         BindFactories();
+    }
+
+    private void BindAssetProvider()
+    {
+        Container.Bind<IAssetProvider>()
+            .To<AssetProvider>()
+            .AsSingle();
     }
     
     private void BindFactories()
