@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 public class StateMachineInstaller : MonoInstaller
@@ -12,6 +11,15 @@ public class StateMachineInstaller : MonoInstaller
     private void BindGameStates()
     {
         Container.Bind<BootstrapState>()
+            .AsSingle();
+
+        Container.Bind<LoadProgressState>()
+            .AsSingle();
+
+        Container.Bind<LoadLevelState>()
+            .AsSingle();
+
+        Container.Bind<GameLoopState>()
             .AsSingle();
     }
 

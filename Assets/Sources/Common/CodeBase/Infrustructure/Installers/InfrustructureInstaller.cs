@@ -10,7 +10,7 @@ public class InfrastructureInstaller : MonoInstaller
     
     private void BindFactories()
     {
-        Container.Bind<StateFactory>()
+        Container.Bind<GameStateFactory>()
             .AsSingle();
     }
 

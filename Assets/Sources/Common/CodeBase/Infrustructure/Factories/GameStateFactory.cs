@@ -1,10 +1,10 @@
 using Zenject;
 
-public class StateFactory
+public class GameStateFactory
 {
     private readonly DiContainer _container;
 
-    public StateFactory(DiContainer container) =>
+    public GameStateFactory(DiContainer container) =>
         _container = container;
 
     public T CreateState<T>() where T : IExitableState =>

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 public class GameStateMachine : IGameStateMachine, IInitializable
@@ -8,18 +7,21 @@ public class GameStateMachine : IGameStateMachine, IInitializable
     private Dictionary<Type, IExitableState> _states;
     private IExitableState _activeState;
 
-    private readonly StateFactory _stateFactory;
+    private readonly GameStateFactory _gameStateFactory;
 
-    public GameStateMachine(StateFactory stateFactory)
+    public GameStateMachine(GameStateFactory gameStateFactory)
     {
-        _stateFactory = stateFactory;
+        _gameStateFactory = gameStateFactory;
     }
 
     public void Initialize()
     {
         _states = new Dictionary<Type, IExitableState>()
         {
-            [typeof(BootstrapState)] = _stateFactory.CreateState<BootstrapState>(),
+            [typeof(BootstrapState)] = _gameStateFactory.CreateState<BootstrapState>(),
+            [typeof(LoadProgressState)] = _gameStateFactory.CreateState<LoadProgressState>(),
+            [typeof(LoadLevelState)] = _gameStateFactory.CreateState<LoadLevelState>(),
+            [typeof(GameLoopState)] = _gameStateFactory.CreateState<GameLoopState>(),
         };
 
         Enter<BootstrapState>();

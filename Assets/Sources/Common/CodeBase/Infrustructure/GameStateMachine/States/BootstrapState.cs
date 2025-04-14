@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class BootstrapState : IState
 {
     private readonly IGameStateMachine _gameStateMachine;
@@ -17,5 +15,5 @@ public class BootstrapState : IState
     public void Exit() { }
 
     private void OnInitialSceneLoaded() =>
-        Debug.Log("Initial Scene Loaded");
+        _gameStateMachine.Enter<LoadProgressState>();
 }
