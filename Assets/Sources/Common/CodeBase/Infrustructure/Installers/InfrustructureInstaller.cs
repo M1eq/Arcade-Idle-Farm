@@ -7,6 +7,14 @@ public class InfrastructureInstaller : MonoInstaller
         BindAssetProvider();
         BindSceneLoader();
         BindFactories();
+        BindInputService();
+    }
+
+    private void BindInputService()
+    {
+        Container.Bind<IInputService>()
+            .To<MobileJoystickInput>()
+            .AsSingle();
     }
 
     private void BindAssetProvider()

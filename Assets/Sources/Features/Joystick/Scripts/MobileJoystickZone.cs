@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using Zenject;
 
 public class MobileJoystickZone : MonoBehaviour, IPointerDownHandler
 {
@@ -7,6 +8,7 @@ public class MobileJoystickZone : MonoBehaviour, IPointerDownHandler
     
     private IInputService _inputService;
 
+    [Inject]
     public void Construct(IInputService inputService)
     {
         _inputService = inputService;
