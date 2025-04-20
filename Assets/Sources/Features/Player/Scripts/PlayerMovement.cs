@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private const float MoveSpeed = 5;
+    private const float MoveSpeed = 25;
 
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private Transform _rendererTransform;
