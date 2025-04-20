@@ -12,8 +12,11 @@ public class InfrastructureInstaller : MonoInstaller
 
     private void BindInputService()
     {
+        Container.BindInterfacesTo<JoystickInput>()
+            .AsSingle();
+        
         Container.Bind<IInputService>()
-            .To<MobileJoystickInput>()
+            .To<MobileInput>()
             .AsSingle();
     }
 
