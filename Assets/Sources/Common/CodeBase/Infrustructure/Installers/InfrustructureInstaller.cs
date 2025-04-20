@@ -4,10 +4,18 @@ public class InfrastructureInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
+        BindStaticDataService();
         BindAssetProvider();
         BindSceneLoader();
         BindFactories();
         BindInputService();
+    }
+
+    private void BindStaticDataService()
+    {
+        Container.Bind<IStaticDataService>()
+            .To<StaticDataService>()
+            .AsSingle();
     }
 
     private void BindInputService()

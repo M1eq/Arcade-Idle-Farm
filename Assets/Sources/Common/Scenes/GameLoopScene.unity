@@ -547,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9062554597669519342, guid: 31f3dbc1f2fb96e43a9c9699e5060d22, type: 3}
       propertyPath: m_Name
-      value: Ground
+      value: GroundTIle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -604,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4042737976821899403, guid: e0921efae75f1744d8a92c2a889ffe2b, type: 3}
       propertyPath: m_Name
-      value: Water
+      value: WaterTIle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

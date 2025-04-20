@@ -6,13 +6,15 @@ public class HudFactory : IHudFactory
 {
     private readonly IInstantiator _instantiator;
     private readonly IAssetProvider _assetProvider;
+    private readonly IStaticDataService _staticDataService;
 
     private Transform _hudRoot;
 
-    public HudFactory(IInstantiator instantiator, IAssetProvider assetProvider)
+    public HudFactory(IInstantiator instantiator, IAssetProvider assetProvider, IStaticDataService staticDataService)
     {
         _instantiator = instantiator;
         _assetProvider = assetProvider;
+        _staticDataService = staticDataService;
     }
 
     public async UniTask CreateHudRoot()
@@ -25,9 +27,10 @@ public class HudFactory : IHudFactory
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Joystick);
 
-        var mainMenuFacade = _instantiator
-            .InstantiatePrefabForComponent<Joystick>(prefab, _hudRoot);
+        var joystick = _instantiator.InstantiatePrefabForComponent<Joystick>(prefab, _hudRoot);
+        var joystickConfig = _staticDataService.GetGameConfig().JoystickConfig;
         
-        mainMenuFacade.transform.SetAsLastSibling();
+        joystick.Initialize(joystickConfig);
+        joystick.transform.SetAsLastSibling();
     }
 }

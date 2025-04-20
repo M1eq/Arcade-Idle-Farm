@@ -3,14 +3,12 @@ using Zenject;
 
 public class Joystick : MonoBehaviour
 {
-    private const float KNOB_MOVEMENT_LIMIT_FACTOR = 1.5f;
-    private const float KNOB_MOVEMENT_SENSIVITY = 1000;
-
     public bool IsDragging { get; private set; }
 
     [SerializeField] private RectTransform _joystickOutline;
     [SerializeField] private RectTransform _joystickKnob;
 
+    private JoystickConfig _config;
     private Vector3 _joystickShowPosition;
     private IJoystickInputWriter _inputWriter;
 
@@ -19,6 +17,9 @@ public class Joystick : MonoBehaviour
     {
         _inputWriter = joystickInput;
     }
+
+    public void Initialize(JoystickConfig config) => 
+        _config = config;
 
     public void ShowAt(Vector3 position)
     {
@@ -38,8 +39,8 @@ public class Joystick : MonoBehaviour
         Vector3 currentPosition = Input.mousePosition;
         Vector3 direction = currentPosition - _joystickShowPosition;
 
-        float moveMagnitude = direction.magnitude * KNOB_MOVEMENT_SENSIVITY / Screen.width;
-        moveMagnitude = Mathf.Min(moveMagnitude, _joystickOutline.rect.width / KNOB_MOVEMENT_LIMIT_FACTOR);
+        float moveMagnitude = direction.magnitude * _config.KnobMovementSensivity / Screen.width;
+        moveMagnitude = Mathf.Min(moveMagnitude, _joystickOutline.rect.width / _config.KnobMovementLimitFactor);
 
         Vector3 knobDirection = direction.normalized * moveMagnitude;
         Vector3 targetKnobPosition = _joystickShowPosition + knobDirection;
