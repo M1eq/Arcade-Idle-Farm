@@ -14,7 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: 27412412845ef9c46980cc297b092516
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 4c0edf09f2231f4438d8d77dd5604b27
+    m_Address: UIRoot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a0242935feea31b42b91cea52529e592
+    m_Address: Mobile Joystick
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6f5997821b0595d408ed3afbae1aef51, type: 2}
   m_SchemaSet:

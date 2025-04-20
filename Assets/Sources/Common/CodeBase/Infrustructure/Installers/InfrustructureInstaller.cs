@@ -31,6 +31,10 @@ public class InfrastructureInstaller : MonoInstaller
     {
         Container.Bind<GameStateFactory>()
             .AsSingle();
+
+        Container.Bind<IHudFactory>()
+            .To<HudFactory>()
+            .AsSingle();
     }
 
     private void BindSceneLoader()
