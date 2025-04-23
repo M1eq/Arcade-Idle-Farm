@@ -4,11 +4,13 @@ using Zenject;
 
 public class GameFactory : IGameFactory
 {
+    private const string GameRootName = "GameRoot";
+    
     private readonly IAssetProvider _assetProvider;
     private readonly IInstantiator _instantiator;
     private readonly IStaticDataService _staticDataService;
 
-    private Transform _playerRoot;
+    private Transform _gameRoot;
     private Vector3 _playerSpawnPosition;
 
     public GameFactory(IInstantiator instantiator, IAssetProvider assetProvider, IStaticDataService staticDataService)
@@ -18,30 +20,34 @@ public class GameFactory : IGameFactory
         _staticDataService = staticDataService;
     }
 
+    public void CreateGameRoot()
+    {
+        GameObject root = new GameObject(GameRootName);
+        _gameRoot = root.transform;
+    }
+
     public async UniTask CreatePlayer()
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Player);
 
-        var player = _instantiator.InstantiatePrefabForComponent<Player>(prefab, _playerRoot);
+        var player = _instantiator.InstantiatePrefabForComponent<Player>(prefab, _gameRoot);
         var playerConfig = _staticDataService.GetGameConfig().PlayerConfig;
 
         var movement = player.GetComponent<PlayerMovement>();
         movement.Initialize(playerConfig.MovementConfig);
-        
+
         var animator = player.GetComponent<PlayerAnimator>();
         animator.Initialize(playerConfig.AnimatorConfig);
-        
-        player.transform.SetParent(_playerRoot);
+
+        player.transform.SetParent(_gameRoot);
         player.transform.position = _playerSpawnPosition;
     }
 
     public async UniTask CreateLevel()
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Level);
-        
-        var level = _instantiator.InstantiatePrefabForComponent<Level>(prefab, _playerRoot);
-        
-        _playerRoot = level.transform;
+
+        var level = _instantiator.InstantiatePrefabForComponent<Level>(prefab, _gameRoot);
         _playerSpawnPosition = level.PlayerSpawnPoint.position;
     }
 }

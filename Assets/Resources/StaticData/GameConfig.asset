@@ -15,3 +15,10 @@ MonoBehaviour:
   <JoystickConfig>k__BackingField:
     <KnobMovementLimitFactor>k__BackingField: 1.5
     <KnobMovementSensivity>k__BackingField: 1000
+  <PlayerConfig>k__BackingField:
+    <MovementConfig>k__BackingField:
+      <MoveSpeed>k__BackingField: 35
+    <AnimatorConfig>k__BackingField:
+      <CrossFadeDuration>k__BackingField: 0.15
+      <IdleSpeedMultiplier>k__BackingField: 1
+      <RunSpeedMultiplier>k__BackingField: 1.4
