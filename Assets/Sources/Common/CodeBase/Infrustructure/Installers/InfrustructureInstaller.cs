@@ -22,7 +22,7 @@ public class InfrastructureInstaller : MonoInstaller
     {
         Container.BindInterfacesTo<JoystickInput>()
             .AsSingle();
-        
+
         Container.Bind<IInputService>()
             .To<MobileInput>()
             .AsSingle();
@@ -34,7 +34,7 @@ public class InfrastructureInstaller : MonoInstaller
             .To<AssetProvider>()
             .AsSingle();
     }
-    
+
     private void BindFactories()
     {
         Container.Bind<GameStateFactory>()
@@ -42,6 +42,10 @@ public class InfrastructureInstaller : MonoInstaller
 
         Container.Bind<IHudFactory>()
             .To<HudFactory>()
+            .AsSingle();
+
+        Container.Bind<IGameFactory>()
+            .To<GameFactory>()
             .AsSingle();
     }
 

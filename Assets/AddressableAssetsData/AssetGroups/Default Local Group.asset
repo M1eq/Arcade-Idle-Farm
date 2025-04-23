@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 718f3ae6f3978e84bbb0468ec3710dfa
+    m_Address: LevelPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7debb96ac7204514081259661bfde075
     m_Address: Player
     m_ReadOnly: 0

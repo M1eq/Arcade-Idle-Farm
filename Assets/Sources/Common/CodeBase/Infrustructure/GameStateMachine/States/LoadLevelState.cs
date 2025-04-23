@@ -5,28 +5,33 @@ public class LoadLevelState : IPayloadedState<string>
     private readonly IGameStateMachine _gameStateMachine;
     private readonly SceneLoader _sceneLoader;
     private readonly IHudFactory _hudFactory;
+    private readonly IGameFactory _gameFactory;
 
-    public LoadLevelState(IGameStateMachine gameStateMachine, IHudFactory hudFactory, SceneLoader sceneLoader)
+    public LoadLevelState(IGameStateMachine gameStateMachine, IHudFactory hudFactory,
+        IGameFactory gameFactory, SceneLoader sceneLoader)
     {
         _hudFactory = hudFactory;
+        _gameFactory = gameFactory;
         _sceneLoader = sceneLoader;
         _gameStateMachine = gameStateMachine;
     }
 
     public void Enter(string sceneName) =>
-        _sceneLoader.LoadScene(sceneName, OnLevelLoaded);
+        _sceneLoader.LoadScene(sceneName, OnLevelSceneLoaded);
 
     public void Exit() { }
 
-    private void OnLevelLoaded()
-    {
-        CreateHud().Forget();
-        _gameStateMachine.Enter<GameLoopState>();
-    }
+    private void OnLevelSceneLoaded() => 
+        ConstructLevel().Forget();
 
-    private async UniTask CreateHud()
+    private async UniTask ConstructLevel()
     {
-        await _hudFactory.CreateHudRoot();
-        await _hudFactory.CreateJoystick();
+        await UniTask.WhenAll(
+            _gameFactory.CreateLevel(),
+            _gameFactory.CreatePlayer(),
+            _hudFactory.CreateHudRoot(),
+            _hudFactory.CreateJoystick());
+        
+        _gameStateMachine.Enter<GameLoopState>();
     }
 }

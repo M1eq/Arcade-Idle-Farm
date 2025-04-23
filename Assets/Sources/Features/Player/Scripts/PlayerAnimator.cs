@@ -3,15 +3,12 @@ using Zenject;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    private const float CrossFadeDuration = 0.15f;
-    private const float RunSpeedMultiplier = 1.25f;
-    private const float IdleSpeedMultiplier = 1f;
-
     [SerializeField] private Animator _animator;
 
     private int _currentMovementHash;
     private IInputService _inputService;
     private readonly PlayerAnimationsHash _animationsHash = new();
+    private PlayerAnimatorConfig _config;
 
     [Inject]
     public void Construct(IInputService inputService)
@@ -19,12 +16,15 @@ public class PlayerAnimator : MonoBehaviour
         _inputService = inputService;
     }
 
+    public void Initialize(PlayerAnimatorConfig playerAnimatorConfig) => 
+        _config = playerAnimatorConfig;
+
     public void UpdateMovementAnimation()
     {
         bool isMoving = _inputService.Direction.magnitude > 0;
         
         int targetAnimationHash = isMoving ? _animationsHash.Run : _animationsHash.Idle;
-        float moveSpeedMultiplier = isMoving ? RunSpeedMultiplier : IdleSpeedMultiplier;
+        float moveSpeedMultiplier = isMoving ? _config.RunSpeedMultiplier : _config.IdleSpeedMultiplier;
 
         CrossFadeMovementAnimation(targetAnimationHash);
         SetMoveSpeedMultiplier(moveSpeedMultiplier);
@@ -35,7 +35,7 @@ public class PlayerAnimator : MonoBehaviour
         if (_currentMovementHash == targetAnimationHash) 
             return;
         
-        _animator.CrossFade(targetAnimationHash, CrossFadeDuration, 0);
+        _animator.CrossFade(targetAnimationHash, _config.CrossFadeDuration, 0);
         _currentMovementHash = targetAnimationHash;
     }
     
