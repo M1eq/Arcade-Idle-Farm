@@ -26,12 +26,12 @@ public class LoadLevelState : IPayloadedState<string>
 
     private async UniTask ConstructLevel()
     {
-        _gameFactory.CreateGameRoot();   
+        _gameFactory.CreateGameRoot();
+        await _hudFactory.CreateHudRoot();
         
         await UniTask.WhenAll(
             _gameFactory.CreateLevel(),
             _gameFactory.CreatePlayer(),
-            _hudFactory.CreateHudRoot(),
             _hudFactory.CreateJoystick());
         
         _gameStateMachine.Enter<GameLoopState>();

@@ -41,13 +41,26 @@ public class GameFactory : IGameFactory
 
         player.transform.SetParent(_gameRoot);
         player.transform.position = _playerSpawnPosition;
+        
+        await CreateFollowCamera(player.transform);
     }
-
+    
     public async UniTask CreateLevel()
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Level);
-
         var level = _instantiator.InstantiatePrefabForComponent<Level>(prefab, _gameRoot);
+        
         _playerSpawnPosition = level.PlayerSpawnPoint.position;
+    }
+    
+    private async UniTask CreateFollowCamera(Transform followTarget)
+    {
+        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.FollowCamera);
+        var followCamera = _instantiator.InstantiatePrefabForComponent<FollowCamera>(prefab, _gameRoot);
+        
+        var followCameraConfig = _staticDataService.GetGameConfig().PlayerConfig.FollowCameraConfig;
+        
+        followCamera.Initialize(followCameraConfig);
+        followCamera.SetTarget(followTarget);
     }
 }

@@ -4,4 +4,5 @@ public static class AssetPath
     public const string UIRoot = "UIRoot";
     public const string Player = "Player";
     public const string Level = "LevelPrefab";
+    public const string FollowCamera = "FollowCamera";
 }
