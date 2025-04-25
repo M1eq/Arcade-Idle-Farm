@@ -22,3 +22,7 @@ MonoBehaviour:
       <CrossFadeDuration>k__BackingField: 0.15
       <IdleSpeedMultiplier>k__BackingField: 1
       <RunSpeedMultiplier>k__BackingField: 1.4
+    <FollowCameraConfig>k__BackingField:
+      <ZoomSpeed>k__BackingField: 2
+      <IdleZoom>k__BackingField: {x: 0, y: 10, z: -10}
+      <MoveZoom>k__BackingField: {x: 0, y: 14, z: -14}

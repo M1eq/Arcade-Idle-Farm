@@ -12,10 +12,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveAt(Vector3 direction)
     {
-        Vector3 moveDirection = direction * (_config.MoveSpeed * Time.deltaTime) / Screen.width;
+        if (direction != Vector3.zero)
+            direction.Normalize();
+        
+        Vector3 moveDirection = direction * (_config.MoveSpeed * Time.deltaTime);
         _characterController.Move(moveDirection);
-
-        if (moveDirection.normalized != Vector3.zero)
+        
+        if (moveDirection != Vector3.zero)
             _rendererTransform.forward = moveDirection.normalized;
     }
 }

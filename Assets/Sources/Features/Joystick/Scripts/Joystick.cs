@@ -18,7 +18,7 @@ public class Joystick : MonoBehaviour
         _inputWriter = joystickInput;
     }
 
-    public void Initialize(JoystickConfig config) => 
+    public void Initialize(JoystickConfig config) =>
         _config = config;
 
     public void ShowAt(Vector3 position)
@@ -39,13 +39,13 @@ public class Joystick : MonoBehaviour
         Vector3 currentPosition = Input.mousePosition;
         Vector3 direction = currentPosition - _joystickShowPosition;
 
-        float moveMagnitude = direction.magnitude * _config.KnobMovementSensivity / Screen.width;
+        float moveMagnitude = direction.magnitude * _config.KnobMovementSensivity;
         moveMagnitude = Mathf.Min(moveMagnitude, _joystickOutline.rect.width / _config.KnobMovementLimitFactor);
 
         Vector3 knobDirection = direction.normalized * moveMagnitude;
         Vector3 targetKnobPosition = _joystickShowPosition + knobDirection;
         Vector3 targetDirection = new Vector3(knobDirection.x, 0, knobDirection.y);
-        
+
         _joystickKnob.position = targetKnobPosition;
         _inputWriter.Update(targetDirection);
     }
