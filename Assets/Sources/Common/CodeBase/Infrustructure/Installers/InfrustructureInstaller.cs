@@ -47,6 +47,10 @@ public class InfrastructureInstaller : MonoInstaller
         Container.Bind<IGameFactory>()
             .To<GameFactory>()
             .AsSingle();
+
+        Container.Bind<IPlantFactory>()
+            .To<PlantFactory>()
+            .AsSingle();
     }
 
     private void BindSceneLoader()

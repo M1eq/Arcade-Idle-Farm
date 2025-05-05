@@ -4,10 +4,12 @@ public class BootstrapState : IState
     private readonly IAssetProvider _assetProvider;
     private readonly SceneLoader _sceneLoader;
     private readonly IInputService _inputService;
+    private readonly IStaticDataService _staticDataService;
 
     public BootstrapState(IGameStateMachine gameStateMachine, IAssetProvider assetProvider,
-        SceneLoader sceneLoader, IInputService inputService)
+        SceneLoader sceneLoader, IInputService inputService, IStaticDataService staticDataService)
     {
+        _staticDataService = staticDataService;
         _gameStateMachine = gameStateMachine;
         _assetProvider = assetProvider;
         _inputService = inputService;
@@ -22,6 +24,7 @@ public class BootstrapState : IState
     private void OnInitialSceneLoaded()
     {
         _assetProvider.Initialize();
+        _staticDataService.LoadResources();
         _inputService.BlockInput();
         
         _gameStateMachine.Enter<LoadProgressState>();
