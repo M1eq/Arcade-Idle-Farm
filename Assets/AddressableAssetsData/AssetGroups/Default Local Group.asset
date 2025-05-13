@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 27412412845ef9c46980cc297b092516
   m_SerializeEntries:
+  - m_GUID: 1421b1b6fc7631a48a888692576b68d5
+    m_Address: InteractionButton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4c0edf09f2231f4438d8d77dd5604b27
     m_Address: UIRoot
     m_ReadOnly: 0
