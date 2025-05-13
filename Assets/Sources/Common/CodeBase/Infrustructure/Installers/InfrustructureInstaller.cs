@@ -9,6 +9,14 @@ public class InfrastructureInstaller : MonoInstaller
         BindSceneLoader();
         BindFactories();
         BindInputService();
+        BindInteractionButtonService();
+    }
+
+    private void BindInteractionButtonService()
+    {
+        Container.Bind<IInteractionButtonService>()
+            .To<InteractionButtonService>()
+            .AsSingle();
     }
 
     private void BindStaticDataService()

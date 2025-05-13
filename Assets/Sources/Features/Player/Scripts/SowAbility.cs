@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SowAbility : MonoBehaviour
+public class SowAbility : MonoBehaviour, IAbility
 {
     [SerializeField] private PlayerAnimator _animator;
     

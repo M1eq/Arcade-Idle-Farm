@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 530671a6dcce5b84992a7417b0d91c86
+    m_Address: Corn
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 718f3ae6f3978e84bbb0468ec3710dfa
     m_Address: LevelPrefab
     m_ReadOnly: 0

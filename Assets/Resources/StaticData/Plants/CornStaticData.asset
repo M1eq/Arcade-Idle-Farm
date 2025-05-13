@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlantType>k__BackingField: 0
   <Prefab>k__BackingField:
-    m_AssetGUID: 
+    m_AssetGUID: 530671a6dcce5b84992a7417b0d91c86
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <SeedScale>k__BackingField: 0
+  <SeedScale>k__BackingField: {x: 0.1, y: 7, z: 0.1}

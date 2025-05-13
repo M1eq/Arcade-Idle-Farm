@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -31,6 +32,18 @@ public class HudFactory : IHudFactory
         var joystickConfig = _staticDataService.GetGameConfig().JoystickConfig;
         
         joystick.Initialize(joystickConfig);
-        joystick.transform.SetAsLastSibling();
+    }
+
+    public async UniTask<InteractionButton> CreateInteractionButton(InteractionButtonType type, Action clickReaction)
+    {
+        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InteractionButton);
+
+        var interactionButtonConfig = _staticDataService.GetInteractionButtonConfig(type);
+        var interactionButton = _instantiator.InstantiatePrefabForComponent<InteractionButton>(prefab, _hudRoot);
+        
+        interactionButton.Initialize(interactionButtonConfig, clickReaction);
+        interactionButton.transform.SetAsLastSibling();
+        
+        return interactionButton;
     }
 }
