@@ -4,6 +4,7 @@ using Zenject;
 public class PlayerAnimator : MonoBehaviour
 {
     private const int SowLayerIndex = 1;
+    private const int WaterLayerIndex = 2;
     
     [SerializeField] private Animator _animator;
 
@@ -21,6 +22,12 @@ public class PlayerAnimator : MonoBehaviour
 
     public void Initialize(PlayerAnimatorConfig playerAnimatorConfig) => 
         _config = playerAnimatorConfig;
+
+    public void LaunchWaterAnimation() => 
+        _animator.SetLayerWeight(WaterLayerIndex, 1);
+
+    public void StopWaterAnimation() => 
+        _animator.SetLayerWeight(WaterLayerIndex, 0);
 
     public void LaunchSowAnimation() =>
         _animator.SetLayerWeight(SowLayerIndex, 1);

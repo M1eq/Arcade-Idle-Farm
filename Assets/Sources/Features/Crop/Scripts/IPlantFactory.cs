@@ -3,5 +3,5 @@ using UnityEngine;
 
 public interface IPlantFactory
 {
-    UniTask<GameObject> Create(PlantType plantType, Transform parent);
+    UniTask<Plant> Create(PlantType plantType, Transform parent);
 }

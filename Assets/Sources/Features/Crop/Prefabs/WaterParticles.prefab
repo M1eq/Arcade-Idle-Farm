@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5116764162171552158}
   - component: {fileID: 6998539768584321100}
   - component: {fileID: 836332041735114422}
+  - component: {fileID: 7987180024032341970}
   m_Layer: 0
   m_Name: WaterParticles
   m_TagString: Untagged
@@ -4834,3 +4835,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7987180024032341970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3973867332433757095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309bc1f449e55d7469b063f9f088b5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

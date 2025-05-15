@@ -7,3 +7,4 @@ public class PlayerAnimationEvents : MonoBehaviour
     public void PlaySeedParticle() => 
         _seedParticle.Play();
 }
+ 

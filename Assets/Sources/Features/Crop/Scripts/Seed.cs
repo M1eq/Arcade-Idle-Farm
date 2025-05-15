@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
@@ -8,7 +9,7 @@ public class Seed : MonoBehaviour
         if (other.TryGetComponent(out CropTile cropTile))
         {
             if (cropTile.Empty)
-                cropTile.Sow();
+                cropTile.Sow().Forget();
         }
     }
 }
