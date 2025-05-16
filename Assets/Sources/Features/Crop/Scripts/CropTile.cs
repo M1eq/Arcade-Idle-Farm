@@ -47,7 +47,7 @@ public class CropTile : MonoBehaviour
         IsWatered = true;
         
         _plant.ScaleToWatered();
-        _colorChanger.ChangeColorTo(_mesh, _config.WateredColor, _config.ColorChangeDuration);
+        _colorChanger.ChangeColorFor(_mesh, _config.WateredColor, _config.ColorChangeDuration);
         
         Watered?.Invoke(this);
     }
