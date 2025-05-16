@@ -7,9 +7,17 @@ public class InfrastructureInstaller : MonoInstaller
         BindStaticDataService();
         BindAssetProvider();
         BindSceneLoader();
+        BindColorChanger();
         BindFactories();
         BindInputService();
         BindInteractionButtonService();
+    }
+
+    private void BindColorChanger()
+    {
+        Container.Bind<IColorChanger>()
+            .To<ColorChanger>()
+            .AsSingle();
     }
 
     private void BindInteractionButtonService()

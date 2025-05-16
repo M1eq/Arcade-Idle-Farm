@@ -8,7 +8,7 @@ public class Seed : MonoBehaviour
     {
         if (other.TryGetComponent(out CropTile cropTile))
         {
-            if (cropTile.Empty)
+            if (cropTile.IsEmpty)
                 cropTile.Sow().Forget();
         }
     }

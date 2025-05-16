@@ -19,4 +19,8 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <SeedScale>k__BackingField: {x: 0.1, y: 7, z: 0.1}
+  <ScaleConfig>k__BackingField:
+    <SeedScaleDuration>k__BackingField: 1
+    <WateredScaleDuration>k__BackingField: 1
+    <SeedScale>k__BackingField: {x: 0.1, y: 7, z: 0.1}
+    <WateredScale>k__BackingField: {x: 0.4, y: 15, z: 0.4}

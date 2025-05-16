@@ -8,24 +8,33 @@ public class CropTile : MonoBehaviour
     public event UnityAction<CropTile> Sowed; 
     public event UnityAction<CropTile> Watered; 
     
-    public bool Empty { get; private set; } = true;
+    public bool IsEmpty { get; private set; } = true;
+    public bool IsWatered { get; private set; }
+    
+    [SerializeField] private MeshRenderer _mesh;
     
     private IPlantFactory _iPlantFactory;
+    private IColorChanger _colorChanger;
     private PlantType _plantType;
     private Plant _plant;
+    private CropTileConfig _config;
 
     [Inject]
-    public void Construct(IPlantFactory iPlantFactory)
+    public void Construct(IPlantFactory iPlantFactory, IColorChanger colorChanger)
     {
+        _colorChanger = colorChanger;
         _iPlantFactory = iPlantFactory;
     }
 
-    public void Initialize(PlantType plantType) => 
+    public void Initialize(PlantType plantType, CropTileConfig config)
+    {
         _plantType = plantType;
+        _config = config;
+    }
 
     public async UniTask Sow()
     {
-        Empty = false;
+        IsEmpty = false;
         
         _plant = await _iPlantFactory.Create(_plantType, transform);
         _plant.ScaleToSeed();
@@ -33,9 +42,13 @@ public class CropTile : MonoBehaviour
         Sowed?.Invoke(this);
     }
 
-    public void Pour()
+    public void Water()
     {
+        IsWatered = true;
+        
         _plant.ScaleToWatered();
+        _colorChanger.ChangeColorTo(_mesh, _config.WateredColor, _config.ColorChangeDuration);
+        
         Watered?.Invoke(this);
     }
 }

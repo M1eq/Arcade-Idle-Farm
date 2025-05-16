@@ -49,6 +49,9 @@ public class GameFactory : IGameFactory
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Level);
         var level = _instantiator.InstantiatePrefabForComponent<Level>(prefab, _gameRoot);
+
+        CropZoneConfig config = _staticDataService.GetGameConfig().CropZoneConfig;
+        level.InitializeCropZones(config);
         
         _playerSpawnPosition = level.PlayerSpawnPoint.position;
     }

@@ -13,6 +13,10 @@ public class CropZone : MonoBehaviour
 
     private readonly List<CropTile> _sowedCropTiles = new();
     private readonly List<CropTile> _wateredCropTiles = new();
+    private CropZoneConfig _config;
+
+    public void Initialize(CropZoneConfig cropZoneConfig) => 
+        _config = cropZoneConfig;
 
     private void Start() =>
         InitializeCropTiles();
@@ -50,7 +54,7 @@ public class CropZone : MonoBehaviour
     private void InitializeCropTiles()
     {
         foreach (CropTile cropTile in _cropTiles)
-            cropTile.Initialize(_plantType);
+            cropTile.Initialize(_plantType, _config.CropTileConfig);
     }
     
     private void HandleCropTileInteraction(CropTile tile, List<CropTile> interactedTiles, 

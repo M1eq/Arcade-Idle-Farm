@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8e324f54968f04db2ec2d3428c4183, type: 3}
   m_Name: WaterButtonStaticData
   m_EditorClassIdentifier: 
-  <ButtonType>k__BackingField: 0
-  <Icon>k__BackingField: {fileID: 0}
+  <ButtonType>k__BackingField: 1
+  <Icon>k__BackingField: {fileID: 21300000, guid: 049475597daff45488d4359e73b9ee68, type: 3}

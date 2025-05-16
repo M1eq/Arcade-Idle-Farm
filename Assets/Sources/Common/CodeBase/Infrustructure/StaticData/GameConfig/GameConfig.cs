@@ -5,4 +5,5 @@ public class GameConfig : ScriptableObject
 {
     [field: SerializeField] public JoystickConfig JoystickConfig { get; private set; }
     [field: SerializeField] public PlayerConfig PlayerConfig { get; private set; }
+    [field: SerializeField] public CropZoneConfig CropZoneConfig { get; private set; }
 }
