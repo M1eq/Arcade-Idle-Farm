@@ -26,6 +26,10 @@ MonoBehaviour:
       <ZoomSpeed>k__BackingField: 2
       <IdleZoom>k__BackingField: {x: 0, y: 10, z: -10}
       <MoveZoom>k__BackingField: {x: 0, y: 14, z: -14}
+    <BendingConfig>k__BackingField:
+      <PositionReference>k__BackingField: _PlayerPosition
+      <BendingTargets>k__BackingField:
+      - {fileID: 2100000, guid: 7b72e3d58d4447e40ba700c5849a066a, type: 2}
   <CropZoneConfig>k__BackingField:
     <CropTileConfig>k__BackingField:
       <DefaultColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
