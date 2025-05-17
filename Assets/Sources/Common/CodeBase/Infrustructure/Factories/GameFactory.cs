@@ -39,6 +39,9 @@ public class GameFactory : IGameFactory
         var animator = player.GetComponent<PlayerAnimator>();
         animator.Initialize(playerConfig.AnimatorConfig);
 
+        var bending = player.GetComponent<Bending>();
+        bending.Initialize(playerConfig.BendingConfig);
+        
         player.transform.SetParent(_gameRoot);
         player.transform.position = _playerSpawnPosition;
         

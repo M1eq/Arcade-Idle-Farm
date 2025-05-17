@@ -393,6 +393,7 @@ GameObject:
   - component: {fileID: 5126030855236868360}
   - component: {fileID: 4716898104351094634}
   - component: {fileID: 624008165668377142}
+  - component: {fileID: 297016060224348602}
   - component: {fileID: 4294402393417347335}
   m_Layer: 0
   m_Name: Player
@@ -509,6 +510,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 3212943351707968971}
   _waterParticle: {fileID: 7203914535279410359}
+--- !u!114 &297016060224348602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399997691929109680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7067b899c3d0ec349bcdf50da0d90db5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!143 &4294402393417347335
 CharacterController:
   m_ObjectHideFlags: 0
