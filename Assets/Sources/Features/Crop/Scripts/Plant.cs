@@ -17,6 +17,7 @@ public class Plant : MonoBehaviour
     private void ScaleTo(Vector3 newScale, float duration)
     {
         transform.DOScale(newScale, duration)
+            .SetEase(Ease.OutBack)
             .SetLink(transform.gameObject);
     }
 }
