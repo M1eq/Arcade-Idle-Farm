@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 3357464923973517913}
   - component: {fileID: 222990451728312255}
   m_Layer: 0
-  m_Name: Stickman_heads_sphere
+  m_Name: MeshRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ Transform:
   m_GameObject: {fileID: 1457923514349339356}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -7.8778406e-10, z: -4.6921453e-11, w: 0.7071067}
-  m_LocalPosition: {x: -0.00000000921078, y: -1.8626078e-11, z: -0.0000000022863968}
+  m_LocalPosition: {x: -0, y: -0.534, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 99.99998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -214,6 +214,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 244673cc966ca9f48963613432a01d13, type: 2}
   - {fileID: 2100000, guid: 796856021f3afe745bad981c1bb3da46, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
