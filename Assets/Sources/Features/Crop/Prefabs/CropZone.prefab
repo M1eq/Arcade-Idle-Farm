@@ -136,6 +136,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -209,6 +217,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -282,6 +298,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -355,6 +379,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -428,6 +460,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -501,6 +541,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -574,6 +622,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -647,6 +703,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -720,6 +784,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -793,6 +865,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -866,6 +946,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -939,6 +1027,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -1012,6 +1108,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -1085,6 +1189,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -1158,6 +1270,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone
@@ -1231,6 +1351,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4039983399741308269}
     m_Modifications:
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Size.y
+      value: 78.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 544231212304991624, guid: 3dddd81223dab7443850536396f8910f, type: 3}
+      propertyPath: m_Center.y
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 1449501958302611373, guid: 3dddd81223dab7443850536396f8910f, type: 3}
       propertyPath: m_Name
       value: CropZone

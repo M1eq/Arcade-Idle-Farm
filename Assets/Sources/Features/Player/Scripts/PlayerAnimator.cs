@@ -5,6 +5,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     private const int SowLayerIndex = 1;
     private const int WaterLayerIndex = 2;
+    private const int HarvestLayerIndex = 3;
     
     [SerializeField] private Animator _animator;
 
@@ -34,6 +35,12 @@ public class PlayerAnimator : MonoBehaviour
     
     public void StopSowAnimation() =>
         _animator.SetLayerWeight(SowLayerIndex, 0);
+
+    public void LaunchHarvestAnimation() => 
+        _animator.SetLayerWeight(HarvestLayerIndex, 1);
+
+    public void StopHarvestAnimation() => 
+        _animator.SetLayerWeight(HarvestLayerIndex, 0);
 
     public void UpdateMovementAnimation()
     {

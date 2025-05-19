@@ -1,5 +1,6 @@
 ﻿public enum InteractionButtonType
 {
     Seed = 0,
-    Water = 1
+    Water = 1,
+    Harvest = 2
 }

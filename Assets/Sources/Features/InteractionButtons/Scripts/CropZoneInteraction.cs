@@ -13,6 +13,7 @@ public class CropZoneInteraction : MonoBehaviour
     private IAbility _currentAbility;
     private SowAbility _sowAbility;
     private WaterAbility _waterAbility;
+    private HarvestAbility _harvestAbility;
 
     [Inject]
     public void Construct(IInteractionButtonService interactionButtonService)
@@ -34,6 +35,10 @@ public class CropZoneInteraction : MonoBehaviour
             case CropZoneInteractionType.Water:
                 ShowInteractionButton(InteractionButtonType.Water, _waterAbility);
                 break;
+            
+            case CropZoneInteractionType.Harvest:
+                ShowInteractionButton(InteractionButtonType.Harvest, _harvestAbility);
+                break;
         }
     }
 
@@ -54,6 +59,7 @@ public class CropZoneInteraction : MonoBehaviour
     {
         CacheAbility(source, ref _sowAbility);
         CacheAbility(source, ref _waterAbility);
+        CacheAbility(source, ref _harvestAbility);
     }
 
     private void CacheAbility<TAbility>(Collider source, ref TAbility abilityField) where TAbility : IAbility

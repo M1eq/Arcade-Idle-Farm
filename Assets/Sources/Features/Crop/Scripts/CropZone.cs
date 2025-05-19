@@ -13,9 +13,10 @@ public class CropZone : MonoBehaviour
 
     private readonly List<CropTile> _sowedCropTiles = new();
     private readonly List<CropTile> _wateredCropTiles = new();
+    private readonly List<CropTile> _harvestedCropTiles = new();
     private CropZoneConfig _config;
 
-    public void Initialize(CropZoneConfig cropZoneConfig) => 
+    public void Initialize(CropZoneConfig cropZoneConfig) =>
         _config = cropZoneConfig;
 
     private void Start() =>
@@ -27,18 +28,22 @@ public class CropZone : MonoBehaviour
     private void OnDisable() =>
         CleanUp();
 
-    private void OnCropTileSowed(CropTile sowedTile) => 
+    private void OnCropTileSowed(CropTile sowedTile) =>
         HandleCropTileInteraction(sowedTile, _sowedCropTiles, CropZoneInteractionType.Water);
 
-    private void OnCropTileWatered(CropTile wateredTile) => 
-        HandleCropTileInteraction(wateredTile, _wateredCropTiles, CropZoneInteractionType.Seed);
-    
+    private void OnCropTileWatered(CropTile wateredTile) =>
+        HandleCropTileInteraction(wateredTile, _wateredCropTiles, CropZoneInteractionType.Harvest);
+
+    private void OnCropTileHarvested(CropTile harvestedTile) => 
+        HandleCropTileInteraction(harvestedTile, _harvestedCropTiles, CropZoneInteractionType.Seed);
+
     private void SubscribeUpdates()
     {
         foreach (CropTile cropTile in _cropTiles)
         {
             cropTile.Sowed += OnCropTileSowed;
             cropTile.Watered += OnCropTileWatered;
+            cropTile.Harvested += OnCropTileHarvested;
         }
     }
 
@@ -48,6 +53,7 @@ public class CropZone : MonoBehaviour
         {
             cropTile.Sowed -= OnCropTileSowed;
             cropTile.Watered -= OnCropTileWatered;
+            cropTile.Harvested -= OnCropTileHarvested;
         }
     }
 
@@ -56,15 +62,16 @@ public class CropZone : MonoBehaviour
         foreach (CropTile cropTile in _cropTiles)
             cropTile.Initialize(_plantType, _config.CropTileConfig);
     }
-    
-    private void HandleCropTileInteraction(CropTile tile, List<CropTile> interactedTiles, 
+
+    private void HandleCropTileInteraction(CropTile tile, List<CropTile> interactedTiles,
         CropZoneInteractionType nextInteractionType)
     {
-        if (interactedTiles.Contains(tile) == false) 
+        if (interactedTiles.Contains(tile) == false)
             interactedTiles.Add(tile);
 
         if (interactedTiles.Count == _cropTiles.Length)
         {
+            interactedTiles.Clear();
             InteractionType = nextInteractionType;
             InteractionFinished?.Invoke();
         }
