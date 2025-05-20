@@ -525,6 +525,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 3212943351707968971}
+  _sickle: {fileID: 2834599614943513987}
+  _mask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &297016060224348602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1756,10 +1760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _seedParticle: {fileID: 4648907247702351834}
-  _sickle: {fileID: 2834599614943513987}
-  _mask:
-    serializedVersion: 2
-    m_Bits: 128
+  _harvestAbility: {fileID: 2323973959850509564}
 --- !u!1001 &209062020961764603
 PrefabInstance:
   m_ObjectHideFlags: 0

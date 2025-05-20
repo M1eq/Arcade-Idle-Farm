@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HarvestButtonStaticData
   m_EditorClassIdentifier: 
   <ButtonType>k__BackingField: 2
-  <Icon>k__BackingField: {fileID: 21300000, guid: ed8213686b57917409d360adc512a459, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: bca84bb8b52799f45b692ca42e88a955, type: 3}
