@@ -45,6 +45,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6ea4f6740eff1343a5adda4bf977676
+    m_Address: HarvestCornParticle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cd079975c8a5d60489016c933b1f11b7
     m_Address: FollowCamera
     m_ReadOnly: 0

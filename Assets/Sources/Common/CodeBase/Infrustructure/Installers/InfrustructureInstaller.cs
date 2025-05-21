@@ -11,6 +11,14 @@ public class InfrastructureInstaller : MonoInstaller
         BindFactories();
         BindInputService();
         BindInteractionButtonService();
+        BindCollectorService();
+    }
+
+    private void BindCollectorService()
+    {
+        Container.Bind<ICollector>()
+            .To<Collector>()
+            .AsSingle();
     }
 
     private void BindColorChanger()
@@ -66,6 +74,10 @@ public class InfrastructureInstaller : MonoInstaller
 
         Container.Bind<IPlantFactory>()
             .To<PlantFactory>()
+            .AsSingle();
+
+        Container.Bind<IParticleFactory>()
+            .To<ParticleFactory>()
             .AsSingle();
     }
 

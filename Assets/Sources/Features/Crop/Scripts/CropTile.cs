@@ -16,13 +16,15 @@ public class CropTile : MonoBehaviour
 
     private IPlantFactory _iPlantFactory;
     private IColorChanger _colorChanger;
+    private ICollector _collector;
     private PlantType _plantType;
     private Plant _plant;
     private CropTileConfig _config;
 
     [Inject]
-    public void Construct(IPlantFactory iPlantFactory, IColorChanger colorChanger)
+    public void Construct(IPlantFactory iPlantFactory, IColorChanger colorChanger, ICollector collector)
     {
+        _collector = collector;
         _colorChanger = colorChanger;
         _iPlantFactory = iPlantFactory;
     }
@@ -56,6 +58,8 @@ public class CropTile : MonoBehaviour
     public void Harvest()
     {
         Destroy(_plant.gameObject);
+        
+        _collector.Collect(transform, CollectableType.Corn, 1);
         _colorChanger.ChangeColorFor(_mesh, _config.DefaultColor, _config.ColorChangeDuration);
 
         IsEmpty = true;
