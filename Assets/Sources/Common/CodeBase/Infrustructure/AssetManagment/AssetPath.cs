@@ -7,4 +7,5 @@ public static class AssetPath
     public const string FollowCamera = "FollowCamera";
     public const string InteractionButton = "InteractionButton";
     public const string HarvestCornParticle = "HarvestCornParticle";
+    public const string InventoryHud = "InventoryHud";
 }

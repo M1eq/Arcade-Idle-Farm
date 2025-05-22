@@ -46,4 +46,10 @@ public class HudFactory : IHudFactory
         
         return interactionButton;
     }
+
+    public async UniTask CreateInventoryHud()
+    {
+        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InventoryHud);
+        _instantiator.InstantiatePrefabForComponent<InventoryHud>(prefab, _hudRoot);
+    }
 }
