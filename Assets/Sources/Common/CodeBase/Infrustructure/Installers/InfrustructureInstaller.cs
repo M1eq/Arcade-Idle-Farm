@@ -13,6 +13,14 @@ public class InfrastructureInstaller : MonoInstaller
         BindInteractionButtonService();
         BindCollectorService();
         BindInventoryService();
+        BindSellService();
+    }
+
+    private void BindSellService()
+    {
+        Container.Bind<ISellService>()
+            .To<Sell>()
+            .AsSingle();
     }
 
     private void BindInventoryService()
