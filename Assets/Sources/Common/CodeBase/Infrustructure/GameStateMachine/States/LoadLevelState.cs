@@ -33,6 +33,7 @@ public class LoadLevelState : IPayloadedState<string>
             _gameFactory.CreateLevel(),
             _gameFactory.CreatePlayer(),
             _hudFactory.CreateInventoryHud(),
+            _hudFactory.CreateWalletHud(),
             _hudFactory.CreateJoystick());
         
         _gameStateMachine.Enter<GameLoopState>();

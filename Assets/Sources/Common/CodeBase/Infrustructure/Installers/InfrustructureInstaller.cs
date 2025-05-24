@@ -14,6 +14,14 @@ public class InfrastructureInstaller : MonoInstaller
         BindCollectorService();
         BindInventoryService();
         BindSellService();
+        BindWalletService();
+    }
+
+    private void BindWalletService()
+    {
+        Container.Bind<IWallet>()
+            .To<Wallet>()
+            .AsSingle();
     }
 
     private void BindSellService()

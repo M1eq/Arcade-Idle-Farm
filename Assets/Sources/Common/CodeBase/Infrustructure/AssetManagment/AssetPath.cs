@@ -8,4 +8,5 @@ public static class AssetPath
     public const string InteractionButton = "InteractionButton";
     public const string HarvestCornParticle = "HarvestCornParticle";
     public const string InventoryHud = "InventoryHud";
+    public const string WalletHud = "WalletHud";
 }

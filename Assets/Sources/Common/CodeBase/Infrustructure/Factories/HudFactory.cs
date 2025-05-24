@@ -52,4 +52,10 @@ public class HudFactory : IHudFactory
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InventoryHud);
         _instantiator.InstantiatePrefabForComponent<InventoryHud>(prefab, _hudRoot);
     }
+    
+    public async UniTask CreateWalletHud()
+    {
+        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.WalletHud);
+        _instantiator.InstantiatePrefabForComponent<WalletHud>(prefab, _hudRoot);
+    }
 }
