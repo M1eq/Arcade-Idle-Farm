@@ -16,11 +16,21 @@ public class Sell : ISellService
     public void SellPlants(float sellMultiplier)
     {
         int plantToSell = (int)(Time.deltaTime * sellMultiplier);
+        
+        var inventoryItemsDictionary = _inventory.GetItemsDictionary();
 
-        if (plantToSell > _inventory.CornAmount)
-            plantToSell = _inventory.CornAmount;
+        foreach (var item in inventoryItemsDictionary)
+        {
+            IReadOnlyInventoryItem inventoryItem = item.Value;
 
-        _inventory.ReduceCorn(plantToSell);
-        _wallet.AddCoins(plantToSell);
+            if (inventoryItem.Amount > 0)
+            {
+                if (plantToSell > inventoryItem.Amount)
+                    plantToSell = inventoryItem.Amount;
+                
+                _inventory.Remove(inventoryItem.Type, plantToSell);
+                _wallet.AddCoins(plantToSell);
+            }
+        }
     }
 }

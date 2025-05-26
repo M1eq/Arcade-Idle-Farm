@@ -18,7 +18,7 @@ public class Collector : ICollector
         {
             case CollectableType.Corn:
                  _particleFactory.CreateHarvestCornParticle(parent, value).Forget();
-                 _inventory.AddCorn(value);
+                 _inventory.Add(PlantType.Corn, value);
                 break;
         }
     }

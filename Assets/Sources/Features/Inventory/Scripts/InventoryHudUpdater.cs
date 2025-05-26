@@ -19,12 +19,12 @@ public class InventoryHudUpdater : MonoBehaviour
     private void OnDestroy() => 
         CleanUp();
     
-    private void OnCornAmountChanged(int cornAmount) => 
-        _inventoryHud.SetCornAmount(cornAmount);
+    private void OnItemChanged(IReadOnlyInventoryItem changedItem) => 
+        _inventoryHud.Set(changedItem.Type, changedItem.Amount);
     
     private void SubscribeUpdates() => 
-        _inventory.CornAmountChanged += OnCornAmountChanged;
+        _inventory.ItemChanged += OnItemChanged;
 
     private void CleanUp() => 
-        _inventory.CornAmountChanged -= OnCornAmountChanged;
+        _inventory.ItemChanged -= OnItemChanged;
 }
