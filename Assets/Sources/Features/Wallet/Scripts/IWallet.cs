@@ -2,6 +2,7 @@
 
 public interface IWallet
 {
-    event UnityAction<int> CoinsAmountChanged;
+    int CoinsAmount { get; }
+    event UnityAction CoinsAmountChanged;
     void AddCoins(int amount);
 }

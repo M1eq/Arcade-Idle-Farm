@@ -2,7 +2,8 @@ using UnityEngine.Events;
 
 public class Wallet : IWallet
 {
-    public event UnityAction<int> CoinsAmountChanged;
+    public int CoinsAmount => _coins;
+    public event UnityAction CoinsAmountChanged;
 
     private int _coins;
 
@@ -12,6 +13,6 @@ public class Wallet : IWallet
             return;
 
         _coins += amount;
-        CoinsAmountChanged?.Invoke(_coins);
+        CoinsAmountChanged?.Invoke();
     }
 }
