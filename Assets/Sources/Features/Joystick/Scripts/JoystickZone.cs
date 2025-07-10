@@ -6,6 +6,8 @@ public class JoystickZone : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 {
     [SerializeField] private Joystick _joystick;
 
+    private bool CanUpdateJoystickDragging => _inputService.InputBlocked == false && _joystick.IsDragging;
+    
     private IInputService _inputService;
 
     [Inject]
@@ -14,14 +16,20 @@ public class JoystickZone : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         _inputService = inputService;
     }
 
-    public void OnPointerDown(PointerEventData eventData) =>
-        ShowJoystickAt(eventData.position);
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (_inputService.InputBlocked == false)
+            ShowJoystickAt(eventData.position);
+    }
 
     public void OnPointerUp(PointerEventData eventData) =>
         HideJoystick();
-    
-    private void Update() =>
-        UpdateJoystickDragging();
+
+    private void Update()
+    {
+        if (CanUpdateJoystickDragging)
+            UpdateJoystickDragging();
+    }
 
     private void Start() =>
         HideJoystick();
@@ -29,19 +37,9 @@ public class JoystickZone : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     private void HideJoystick() =>
         _joystick.Hide();
 
-    private void UpdateJoystickDragging()
-    {
-        if (_inputService.InputBlocked || _joystick.IsDragging == false)
-            return;
-
+    private void UpdateJoystickDragging() =>
         _joystick.DragKnob();
-    }
 
-    private void ShowJoystickAt(Vector3 position)
-    {
-        if (_inputService.InputBlocked)
-            return;
-
+    private void ShowJoystickAt(Vector3 position) =>
         _joystick.ShowAt(position);
-    }
 }

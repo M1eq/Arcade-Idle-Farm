@@ -67,8 +67,9 @@ public class GameFactory : IGameFactory
         var followCamera = _instantiator.InstantiatePrefabForComponent<FollowCamera>(prefab, _gameRoot);
         
         var followCameraConfig = _staticDataService.GetGameConfig().PlayerConfig.FollowCameraConfig;
+        var followCameraUpdater = followCamera.GetComponent<FollowCameraUpdater>();
         
-        followCamera.Initialize(followCameraConfig);
+        followCameraUpdater.Initialize(followCameraConfig);
         followCamera.SetTarget(followTarget);
     }
 }

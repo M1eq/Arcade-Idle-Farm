@@ -7,7 +7,10 @@ public class Bending : MonoBehaviour
     public void Initialize(BendingConfig config) => 
         _config = config;
 
-    private void Update()
+    private void Update() => 
+        ApplyBending();
+
+    private void ApplyBending()
     {
         foreach (var material in _config.BendingTargets)
             material.SetVector(_config.PositionReference, transform.position);

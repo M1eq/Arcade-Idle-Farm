@@ -14,6 +14,7 @@ public class CropZone : MonoBehaviour
     private readonly List<CropTile> _sowedCropTiles = new();
     private readonly List<CropTile> _wateredCropTiles = new();
     private readonly List<CropTile> _harvestedCropTiles = new();
+    
     private CropZoneConfig _config;
 
     public void Initialize(CropZoneConfig cropZoneConfig) =>

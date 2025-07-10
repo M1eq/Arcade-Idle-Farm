@@ -16,7 +16,6 @@ public class Sell : ISellService
     public void SellPlants(float sellMultiplier)
     {
         int plantToSell = (int)(Time.deltaTime * sellMultiplier);
-        
         var inventoryItemsDictionary = _inventory.GetItemsDictionary();
 
         foreach (var item in inventoryItemsDictionary)

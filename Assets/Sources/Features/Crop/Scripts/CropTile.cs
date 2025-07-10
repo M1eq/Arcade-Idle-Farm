@@ -47,8 +47,11 @@ public class CropTile : MonoBehaviour
 
     public void Water()
     {
+        if (_plant == null)
+            return;
+        
         IsWatered = true;
-
+        
         _plant.ScaleToWatered();
         _colorChanger.ChangeColorFor(_mesh, _config.WateredColor, _config.ColorChangeDuration);
 
@@ -57,6 +60,9 @@ public class CropTile : MonoBehaviour
 
     public void Harvest()
     {
+        if (_plant == null)
+            return;
+        
         Destroy(_plant.gameObject);
         
         _collector.Collect(transform, CollectableType.Corn, 1);

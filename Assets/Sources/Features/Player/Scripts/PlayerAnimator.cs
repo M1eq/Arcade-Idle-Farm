@@ -63,5 +63,5 @@ public class PlayerAnimator : MonoBehaviour
     }
     
     private void SetMoveSpeedMultiplier(float moveSpeedValue) => 
-        _animator.SetFloat(_animationsHash.MoveMultiplierParameter, moveSpeedValue);
+        _animator.SetFloat(_animationsHash.MoveSpeedMultiplierParameter, moveSpeedValue);
 }

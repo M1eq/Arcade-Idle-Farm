@@ -1,6 +1,6 @@
 public class InventoryItem : IReadOnlyInventoryItem
 {
-    public PlantType Type { get; private set; }
+    public PlantType Type { get; }
     public int Amount { get; private set; }
 
     public InventoryItem(PlantType type, int amount)
