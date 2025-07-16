@@ -24,8 +24,8 @@ MonoBehaviour:
       <RunSpeedMultiplier>k__BackingField: 1.4
     <FollowCameraConfig>k__BackingField:
       <ZoomSpeed>k__BackingField: 2
-      <IdleZoom>k__BackingField: {x: 0, y: 10, z: -10}
-      <MoveZoom>k__BackingField: {x: 0, y: 17, z: -17}
+      <IdleZoom>k__BackingField: {x: 0, y: 9, z: -9}
+      <MoveZoom>k__BackingField: {x: 0, y: 14, z: -14}
     <BendingConfig>k__BackingField:
       <PositionReference>k__BackingField: _PlayerPosition
       <BendingTargets>k__BackingField:
