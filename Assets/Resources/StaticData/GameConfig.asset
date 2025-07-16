@@ -25,7 +25,7 @@ MonoBehaviour:
     <FollowCameraConfig>k__BackingField:
       <ZoomSpeed>k__BackingField: 2
       <IdleZoom>k__BackingField: {x: 0, y: 10, z: -10}
-      <MoveZoom>k__BackingField: {x: 0, y: 14, z: -14}
+      <MoveZoom>k__BackingField: {x: 0, y: 17, z: -17}
     <BendingConfig>k__BackingField:
       <PositionReference>k__BackingField: _PlayerPosition
       <BendingTargets>k__BackingField:
@@ -35,3 +35,5 @@ MonoBehaviour:
       <DefaultColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
       <WateredColor>k__BackingField: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
       <ColorChangeDuration>k__BackingField: 2
+  <PlantSellZoneConfig>k__BackingField:
+    <SellMultiplierStep>k__BackingField: 300
