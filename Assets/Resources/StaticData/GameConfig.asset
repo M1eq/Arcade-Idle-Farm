@@ -37,3 +37,7 @@ MonoBehaviour:
       <ColorChangeDuration>k__BackingField: 2
   <PlantSellZoneConfig>k__BackingField:
     <SellMultiplierStep>k__BackingField: 300
+  <ItemIconsDataBase>k__BackingField:
+    _itemIcons:
+    - <PlantType>k__BackingField: 0
+      <Icon>k__BackingField: {fileID: 21300000, guid: 95472c809f10743c5a778a05539cda2d, type: 3}

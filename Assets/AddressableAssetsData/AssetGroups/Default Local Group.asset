@@ -60,6 +60,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d92f1f7083cee9d49b91195bbedcadb5
+    m_Address: ItemCell
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec13732da2cb64c458f126d173091c04
     m_Address: WalletHud
     m_ReadOnly: 0

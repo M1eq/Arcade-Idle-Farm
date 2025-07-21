@@ -33,7 +33,23 @@ public class HudFactory : IHudFactory
         
         joystick.Initialize(joystickConfig);
     }
+    
+    public async UniTask CreateInventoryHud()
+    {
+        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InventoryHud);
 
+        var itemIconsDataBase = _staticDataService.GetGameConfig().ItemIconsDataBase;
+        var inventoryHud = _instantiator.InstantiatePrefabForComponent<InventoryHud>(prefab, _hudRoot);
+        
+        inventoryHud.Initialize(itemIconsDataBase);
+    }
+    
+    public async UniTask CreateWalletHud()
+    {
+        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.WalletHud);
+        _instantiator.InstantiatePrefabForComponent<WalletHud>(prefab, _hudRoot);
+    }
+    
     public async UniTask<InteractionButton> CreateInteractionButton(InteractionButtonType type, Action clickReaction)
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InteractionButton);
@@ -46,16 +62,17 @@ public class HudFactory : IHudFactory
         
         return interactionButton;
     }
-
-    public async UniTask CreateInventoryHud()
-    {
-        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InventoryHud);
-        _instantiator.InstantiatePrefabForComponent<InventoryHud>(prefab, _hudRoot);
-    }
     
-    public async UniTask CreateWalletHud()
+    public async UniTask<ItemCell> CreateItemCell(PlantType plantType, Transform parent)
     {
-        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.WalletHud);
-        _instantiator.InstantiatePrefabForComponent<WalletHud>(prefab, _hudRoot);
+        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.ItemCell);
+        
+        var itemCell = _instantiator.InstantiatePrefabForComponent<ItemCell>(prefab, parent);
+        var gameConfig = _staticDataService.GetGameConfig();
+        
+        Sprite itemIcon = gameConfig.ItemIconsDataBase.GetIcon(plantType);
+        itemCell.SetIcon(itemIcon);
+        
+        return itemCell;
     }
 }

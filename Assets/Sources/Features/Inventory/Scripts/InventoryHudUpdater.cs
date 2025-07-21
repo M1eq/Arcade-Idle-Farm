@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -20,7 +21,7 @@ public class InventoryHudUpdater : MonoBehaviour
         CleanUp();
     
     private void OnItemChanged(IReadOnlyInventoryItem changedItem) => 
-        _inventoryHud.Set(changedItem.Type, changedItem.Amount);
+        _inventoryHud.Set(changedItem.Type, changedItem.Amount).Forget();
     
     private void SubscribeUpdates() => 
         _inventory.ItemChanged += OnItemChanged;

@@ -103,6 +103,10 @@ public class InfrastructureInstaller : MonoInstaller
         Container.Bind<IParticleFactory>()
             .To<ParticleFactory>()
             .AsSingle();
+
+        Container.Bind<IItemCellService>()
+            .To<ItemCellFactory>()
+            .AsSingle();
     }
 
     private void BindSceneLoader()

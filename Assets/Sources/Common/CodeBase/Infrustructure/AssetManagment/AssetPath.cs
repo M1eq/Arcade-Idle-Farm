@@ -9,4 +9,5 @@ public static class AssetPath
     public const string HarvestCornParticle = "HarvestCornParticle";
     public const string InventoryHud = "InventoryHud";
     public const string WalletHud = "WalletHud";
+    public const string ItemCell = "ItemCell";
 }
