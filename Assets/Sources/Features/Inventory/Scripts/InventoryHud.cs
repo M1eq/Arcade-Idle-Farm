@@ -14,17 +14,15 @@ public class InventoryHud : MonoBehaviour
     private readonly List<ItemCell> _freeCellsPool = new();
 
     private IItemCellFactory _itemCellFactory;
-    private ItemIconsDataBase _itemIconsDataBase;
+    private IStaticDataService _staticData;
 
     [Inject]
-    public void Construct(IItemCellFactory itemCellFactory)
+    public void Construct(IItemCellFactory itemCellFactory, IStaticDataService staticData)
     {
+        _staticData = staticData;
         _itemCellFactory = itemCellFactory;
     }
-
-    public void Initialize(ItemIconsDataBase itemIconsDataBase) =>
-        _itemIconsDataBase = itemIconsDataBase;
-
+    
     public async UniTask Set(PlantType type, int amount)
     {
         if (_pendingTasks.ContainsKey(type))
@@ -94,7 +92,7 @@ public class InventoryHud : MonoBehaviour
         _freeCellsPool.Remove(freeItemCell);
 
         freeItemCell.SetAmount(amount);
-        freeItemCell.SetIcon(_itemIconsDataBase.GetIcon(type));
+        freeItemCell.SetIcon(_staticData.GetPlantConfig(type).Icon);
     }
 
     private void ReturnCellToPool(PlantType type, ItemCell itemCell)

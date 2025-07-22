@@ -37,11 +37,7 @@ public class HudFactory : IHudFactory
     public async UniTask CreateInventoryHud()
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InventoryHud);
-
-        var itemIconsDataBase = _staticDataService.GetGameConfig().ItemIconsDataBase;
-        var inventoryHud = _instantiator.InstantiatePrefabForComponent<InventoryHud>(prefab, _hudRoot);
-        
-        inventoryHud.Initialize(itemIconsDataBase);
+       _instantiator.InstantiatePrefabForComponent<InventoryHud>(prefab, _hudRoot);
     }
     
     public async UniTask CreateWalletHud()
@@ -68,9 +64,9 @@ public class HudFactory : IHudFactory
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.ItemCell);
         
         var itemCell = _instantiator.InstantiatePrefabForComponent<ItemCell>(prefab, parent);
-        var gameConfig = _staticDataService.GetGameConfig();
+        var itemConfig = _staticDataService.GetPlantConfig(plantType);
         
-        Sprite itemIcon = gameConfig.ItemIconsDataBase.GetIcon(plantType);
+        Sprite itemIcon = itemConfig.Icon;
         itemCell.SetIcon(itemIcon);
         
         return itemCell;

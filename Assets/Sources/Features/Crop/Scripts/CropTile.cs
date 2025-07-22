@@ -14,6 +14,7 @@ public class CropTile : MonoBehaviour
 
     [SerializeField] private MeshRenderer _mesh;
 
+    private IStaticDataService _staticData;
     private IPlantFactory _iPlantFactory;
     private IColorChanger _colorChanger;
     private ICollector _collector;
@@ -22,9 +23,11 @@ public class CropTile : MonoBehaviour
     private CropTileConfig _config;
 
     [Inject]
-    public void Construct(IPlantFactory iPlantFactory, IColorChanger colorChanger, ICollector collector)
+    public void Construct(IPlantFactory iPlantFactory, IColorChanger colorChanger,
+        ICollector collector, IStaticDataService staticData)
     {
         _collector = collector;
+        _staticData = staticData;
         _colorChanger = colorChanger;
         _iPlantFactory = iPlantFactory;
     }
@@ -63,8 +66,11 @@ public class CropTile : MonoBehaviour
         if (_plant == null)
             return;
         
+        PlantStaticData plantData = _staticData.GetPlantConfig(_plantType);
         Destroy(_plant.gameObject);
-        _collector.Collect(transform, CollectableType.Corn, 1);
+        
+        _collector.Collect(transform, plantData.CollectableType,
+            plantData.LootAmounts[Random.Range(0, plantData.LootAmounts.Length)]);
         
         _colorChanger.ChangeColorFor(_mesh, _config.DefaultColor,
             _config.RestoreDefaultDurations[Random.Range(0, _config.RestoreDefaultDurations.Length)]);
