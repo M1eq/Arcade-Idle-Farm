@@ -13,11 +13,11 @@ public class InventoryHud : MonoBehaviour
     private readonly Dictionary<PlantType, ItemCell> _itemsCells = new();
     private readonly List<ItemCell> _freeCellsPool = new();
 
-    private IItemCellService _itemCellFactory;
+    private IItemCellFactory _itemCellFactory;
     private ItemIconsDataBase _itemIconsDataBase;
 
     [Inject]
-    public void Construct(IItemCellService itemCellFactory)
+    public void Construct(IItemCellFactory itemCellFactory)
     {
         _itemCellFactory = itemCellFactory;
     }

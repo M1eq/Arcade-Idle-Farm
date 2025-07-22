@@ -53,7 +53,7 @@ public class CropTile : MonoBehaviour
         IsWatered = true;
         
         _plant.ScaleToWatered();
-        _colorChanger.ChangeColorFor(_mesh, _config.WateredColor, _config.ColorChangeDuration);
+        _colorChanger.ChangeColorFor(_mesh, _config.WateredColor, _config.WateredDuration);
 
         Watered?.Invoke(this);
     }
@@ -64,9 +64,10 @@ public class CropTile : MonoBehaviour
             return;
         
         Destroy(_plant.gameObject);
-        
         _collector.Collect(transform, CollectableType.Corn, 1);
-        _colorChanger.ChangeColorFor(_mesh, _config.DefaultColor, _config.ColorChangeDuration);
+        
+        _colorChanger.ChangeColorFor(_mesh, _config.DefaultColor,
+            _config.RestoreDefaultDurations[Random.Range(0, _config.RestoreDefaultDurations.Length)]);
 
         IsEmpty = true;
         IsWatered = false;

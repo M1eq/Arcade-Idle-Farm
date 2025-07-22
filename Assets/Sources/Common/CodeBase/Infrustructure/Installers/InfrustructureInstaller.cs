@@ -104,7 +104,7 @@ public class InfrastructureInstaller : MonoInstaller
             .To<ParticleFactory>()
             .AsSingle();
 
-        Container.Bind<IItemCellService>()
+        Container.Bind<IItemCellFactory>()
             .To<ItemCellFactory>()
             .AsSingle();
     }

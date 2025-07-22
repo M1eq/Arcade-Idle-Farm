@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class ItemCellFactory : IItemCellService
+public class ItemCellFactory : IItemCellFactory
 {
     private readonly IHudFactory _hudFactory;
 
