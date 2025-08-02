@@ -15,6 +15,18 @@ public class InfrastructureInstaller : MonoInstaller
         BindInventoryService();
         BindSellService();
         BindWalletService();
+        BindProgressService();
+    }
+
+    private void BindProgressService()
+    {
+        Container.Bind<ISaveSystem>()
+            .To<SaveSystem>()
+            .AsSingle();
+
+        Container.Bind<IGameProgressService>()
+            .To<GameProgressService>()
+            .AsSingle();
     }
 
     private void BindWalletService()

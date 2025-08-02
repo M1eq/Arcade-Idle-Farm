@@ -6,13 +6,21 @@ public class Wallet : IWallet
     public event UnityAction CoinsAmountChanged;
 
     private int _coins;
+    private readonly IGameProgressService _gameProgressService;
 
+    public Wallet(IGameProgressService gameProgressService)
+    {
+        _gameProgressService = gameProgressService;
+        _coins = _gameProgressService.Progress.WalletData.Coins;
+    }
+    
     public void AddCoins(int amount)
     {
         if (amount <= 0)
             return;
 
         _coins += amount;
+        _gameProgressService.Progress.WalletData.UpdateData(this);
         CoinsAmountChanged?.Invoke();
     }
 }

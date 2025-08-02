@@ -14,5 +14,12 @@ public sealed class SaveSystem : ISaveSystem
         // string dataKey = GetKey<TData>();  
         // string serializedData = await ReadFromDataStorageAsync(dataKey);  
         // return await DeserializeAsync<TData>(serializedData);  
+        
+        return default(TData);
+    }
+
+    public UniTask<bool> ExistsAsync<TData>() where TData : ISaveData
+    {
+        return new UniTask<bool>(false);
     }
 }

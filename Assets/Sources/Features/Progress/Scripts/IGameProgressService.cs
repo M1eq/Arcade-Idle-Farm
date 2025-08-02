@@ -3,7 +3,9 @@
 public interface IGameProgressService
 {
     GameProgress Progress { get; }
-    UniTask ApplyProgressAsync();
-    UniTask UpdateProgressAsync();
+    void ApplyProgress();
+    UniTask SaveProgressAsync();
     UniTask LoadProgressAsync();
+    UniTask<bool> SavedProgressExists();
+    void InitializeNewProgress();
 }

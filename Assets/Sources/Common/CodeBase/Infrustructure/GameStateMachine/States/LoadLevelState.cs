@@ -6,10 +6,12 @@ public class LoadLevelState : IPayloadedState<string>
     private readonly SceneLoader _sceneLoader;
     private readonly IHudFactory _hudFactory;
     private readonly IGameFactory _gameFactory;
+    private readonly IGameProgressService _gameProgressService;
 
     public LoadLevelState(IGameStateMachine gameStateMachine, IHudFactory hudFactory,
-        IGameFactory gameFactory, SceneLoader sceneLoader)
+        IGameFactory gameFactory, SceneLoader sceneLoader, IGameProgressService gameProgressService)
     {
+        _gameProgressService = gameProgressService;
         _hudFactory = hudFactory;
         _gameFactory = gameFactory;
         _sceneLoader = sceneLoader;
@@ -36,6 +38,7 @@ public class LoadLevelState : IPayloadedState<string>
             _hudFactory.CreateWalletHud(),
             _hudFactory.CreateJoystick());
         
+        _gameProgressService.ApplyProgress();
         _gameStateMachine.Enter<GameLoopState>();
     }
 }
