@@ -31,8 +31,7 @@ public class InfrastructureInstaller : MonoInstaller
 
     private void BindWalletService()
     {
-        Container.Bind<IWallet>()
-            .To<Wallet>()
+        Container.BindInterfacesTo<Wallet>()
             .AsSingle();
     }
 

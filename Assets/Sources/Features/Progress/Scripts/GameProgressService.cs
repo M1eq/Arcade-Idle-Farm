@@ -11,11 +11,14 @@ public sealed class GameProgressService : IGameProgressService
     private GameProgress _cachedProgress;
     private readonly ISaveSystem _saveSystem;
     private readonly IGameFactory _gameFactory;
+    private readonly NewWalletDataConfig _newWalletDataConfig;
 
-    public GameProgressService(ISaveSystem saveSystem, IGameFactory gameFactory)
+    public GameProgressService(ISaveSystem saveSystem, IGameFactory gameFactory, IStaticDataService staticDataService)
     {
         _saveSystem = saveSystem;
         _gameFactory = gameFactory;
+        
+        _newWalletDataConfig = staticDataService.GetGameConfig().NewProgressConfig.NewWalletDataConfig;
     }
 
     public void ApplyProgress()
@@ -73,6 +76,6 @@ public sealed class GameProgressService : IGameProgressService
     private WorldData GetNewWorldData() => 
         new();
 
-    private WalletData GetNewWalletData() => 
-        new WalletData(0);
+    private WalletData GetNewWalletData() =>
+        new(_newWalletDataConfig.Coins);
 }
