@@ -57,7 +57,7 @@ public sealed class GameProgressService : IGameProgressService
         var worldDataExists = await _saveSystem.ExistsAsync<WorldData>();
         var walletDataExists = await _saveSystem.ExistsAsync<WalletData>();
         
-        return playerDataExists || worldDataExists || walletDataExists;
+        return playerDataExists && worldDataExists && walletDataExists;
     }
 
     public void InitializeNewProgress()

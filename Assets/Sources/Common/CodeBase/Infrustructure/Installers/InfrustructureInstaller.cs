@@ -20,6 +20,10 @@ public class InfrastructureInstaller : MonoInstaller
 
     private void BindProgressService()
     {
+        Container.Bind<ISerializer>()
+            .To<JsonUtilitySerializer>()
+            .AsSingle();
+        
         Container.Bind<ISaveSystem>()
             .To<SaveSystem>()
             .AsSingle();
