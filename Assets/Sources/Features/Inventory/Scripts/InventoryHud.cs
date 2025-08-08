@@ -82,6 +82,7 @@ public class InventoryHud : MonoBehaviour
     private async UniTask CreateCell(PlantType type, int amount)
     {
         ItemCell itemCell = await _itemCellFactory.Create(type, _cellsContainer);
+        
         itemCell.SetAmount(amount);
         _itemsCells.Add(type, itemCell);
     }

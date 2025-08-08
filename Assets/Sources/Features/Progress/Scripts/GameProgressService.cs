@@ -1,4 +1,7 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 
 public sealed class GameProgressService : IGameProgressService
 {
@@ -11,14 +14,17 @@ public sealed class GameProgressService : IGameProgressService
     private GameProgress _cachedProgress;
     private readonly ISaveSystem _saveSystem;
     private readonly IGameFactory _gameFactory;
-    private readonly NewWalletDataConfig _newWalletDataConfig;
+    private readonly ISaveDataFactory _saveDataFactory;
+    
+    private CancellationTokenSource _playerSaveCancellationToken;
+    private CancellationTokenSource _worldSaveCancellationToken;
+    private CancellationTokenSource _walletSaveCancellationToken;
 
-    public GameProgressService(ISaveSystem saveSystem, IGameFactory gameFactory, IStaticDataService staticDataService)
+    public GameProgressService(ISaveSystem saveSystem, IGameFactory gameFactory, ISaveDataFactory saveDataFactory)
     {
         _saveSystem = saveSystem;
         _gameFactory = gameFactory;
-        
-        _newWalletDataConfig = staticDataService.GetGameConfig().NewProgressConfig.NewWalletDataConfig;
+        _saveDataFactory = saveDataFactory;
     }
 
     public void ApplyProgress()
@@ -29,18 +35,24 @@ public sealed class GameProgressService : IGameProgressService
 
     public async UniTask SaveProgressAsync()
     {
+        CancelCurrentSaves();
+        ResetCancellationTokens();
+        
+        var tasks = new List<UniTask>();
+        
         if (PlayerDataUpdated)
-            await _saveSystem.SaveAsync(Progress.PlayerData);
+            tasks.Add(SaveDataAsync(Progress.PlayerData, _playerSaveCancellationToken));
 
         if (WorldDataUpdated)
-            await _saveSystem.SaveAsync(Progress.WorldData);
-
+            tasks.Add(SaveDataAsync(Progress.WorldData, _worldSaveCancellationToken));
+        
         if (WalletDataUpdated)
-            await _saveSystem.SaveAsync(Progress.WalletData);
+            tasks.Add(SaveDataAsync(Progress.WalletData, _walletSaveCancellationToken));
 
+        await UniTask.WhenAll(tasks);
         _cachedProgress = Progress.Clone();
     }
-
+    
     public async UniTask LoadProgressAsync()
     {
         var playerData = await _saveSystem.LoadAsync<PlayerData>();
@@ -62,20 +74,38 @@ public sealed class GameProgressService : IGameProgressService
 
     public void InitializeNewProgress()
     {
-        PlayerData playerData = GetNewPlayerData();
-        WorldData worldData = GetNewWorldData();
-        WalletData walletData = GetNewWalletData();
+        PlayerData playerData = _saveDataFactory.CreateNewPlayerData();
+        WorldData worldData = _saveDataFactory.CreateNewWorldData();
+        WalletData walletData = _saveDataFactory.CreateNewWalletData();
         
         Progress = new GameProgress(playerData, worldData, walletData);
         _cachedProgress = Progress.Clone();
     }
     
-    private PlayerData GetNewPlayerData() => 
-        new();
+    private void CancelCurrentSaves()
+    {
+        _playerSaveCancellationToken?.Cancel();
+        _worldSaveCancellationToken?.Cancel();
+        _walletSaveCancellationToken?.Cancel();
+    }
 
-    private WorldData GetNewWorldData() => 
-        new();
-
-    private WalletData GetNewWalletData() =>
-        new(_newWalletDataConfig.Coins);
+    private void ResetCancellationTokens()
+    {
+        _playerSaveCancellationToken = new CancellationTokenSource();
+        _worldSaveCancellationToken = new CancellationTokenSource();
+        _walletSaveCancellationToken = new CancellationTokenSource();
+    }
+    
+    private async UniTask SaveDataAsync<T>(T data, CancellationTokenSource cancellationToken) where T : ISaveData
+    {
+        try 
+        {
+            await _saveSystem.SaveAsync(data)
+                .AttachExternalCancellation(cancellationToken.Token);
+        }
+        catch (OperationCanceledException)
+        {
+            UnityEngine.Debug.LogWarning($"Сохранение {typeof(T).Name} отменено (новые изменения)");
+        }
+    }
 }

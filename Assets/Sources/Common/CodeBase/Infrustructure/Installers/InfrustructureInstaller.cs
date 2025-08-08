@@ -102,6 +102,10 @@ public class InfrastructureInstaller : MonoInstaller
     {
         Container.Bind<GameStateFactory>()
             .AsSingle();
+        
+        Container.Bind<ISaveDataFactory>()
+            .To<SaveDataFactory>()
+            .AsSingle();
 
         Container.Bind<IHudFactory>()
             .To<HudFactory>()
