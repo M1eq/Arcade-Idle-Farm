@@ -4,7 +4,7 @@ using UnityEngine;
 
 public sealed class SaveSystem : ISaveSystem
 {
-    private const string FileExtension = ".json";
+    private const string FileExtension = "json";
     
     private readonly ISerializer _serializer;
     private readonly string _folderPath;

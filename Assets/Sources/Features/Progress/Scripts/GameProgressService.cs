@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 
 public sealed class GameProgressService : IGameProgressService
 {
+    public event Action ProgressLoaded;
     public GameProgress Progress { get; private set; }
 
     private bool PlayerDataUpdated => _cachedProgress.PlayerData.EqualsData(Progress.PlayerData) == false;
@@ -55,12 +56,17 @@ public sealed class GameProgressService : IGameProgressService
     
     public async UniTask LoadProgressAsync()
     {
-        var playerData = await _saveSystem.LoadAsync<PlayerData>();
-        var worldData = await _saveSystem.LoadAsync<WorldData>();
+        PlayerData playerData = _saveDataFactory.CreateNewPlayerData();
+        WorldData worldData = _saveDataFactory.CreateNewWorldData();
+        
+        // var playerData = await _saveSystem.LoadAsync<PlayerData>();
+        // var worldData = await _saveSystem.LoadAsync<WorldData>();
         var walletData = await _saveSystem.LoadAsync<WalletData>();
 
         Progress = new GameProgress(playerData, worldData, walletData);
         _cachedProgress = Progress.Clone();
+        
+        ProgressLoaded?.Invoke();
     }
 
     public async UniTask<bool> SavedProgressExists()
@@ -69,7 +75,7 @@ public sealed class GameProgressService : IGameProgressService
         var worldDataExists = await _saveSystem.ExistsAsync<WorldData>();
         var walletDataExists = await _saveSystem.ExistsAsync<WalletData>();
         
-        return playerDataExists && worldDataExists && walletDataExists;
+        return playerDataExists || worldDataExists || walletDataExists;
     }
 
     public void InitializeNewProgress()

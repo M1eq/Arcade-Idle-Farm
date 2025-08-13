@@ -1,21 +1,27 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
 public sealed class WalletData : ISaveData
 {
-    public int Coins { get; private set; }
+    public int Coins => _coins;
+    
+    [SerializeField] private int _coins;
     
     public WalletData(int coins)
     {
-        Coins = coins;
+        _coins = coins;
     }
 
-    public bool EqualsData(WalletData data) => 
-        throw new NotImplementedException();
+    public bool EqualsData(WalletData data)
+    {  
+        bool coinsEquals = _coins == data.Coins;
+        return coinsEquals;
+    }
 
     public WalletData Clone() =>
-        new(Coins);
+        new(_coins);
 
     public void UpdateData(IWallet wallet) => 
-        Coins = wallet.CoinsAmount;
+        _coins = wallet.CoinsAmount;
 }

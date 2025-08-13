@@ -1,7 +1,7 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine.Events;
 
-public class Wallet : IWallet, IInitializable
+public class Wallet : IWallet, IDisposable
 {
     public int CoinsAmount => _coins;
     public event UnityAction CoinsAmountChanged;
@@ -12,11 +12,8 @@ public class Wallet : IWallet, IInitializable
     public Wallet(IGameProgressService gameProgressService)
     {
         _gameProgressService = gameProgressService;
-        _coins = _gameProgressService.Progress.WalletData.Coins;
+        _gameProgressService.ProgressLoaded += OnProgressLoaded;
     }
-    
-    public void Initialize() => 
-        CoinsAmountChanged?.Invoke();
     
     public void AddCoins(int amount)
     {
@@ -25,6 +22,15 @@ public class Wallet : IWallet, IInitializable
 
         _coins += amount;
         _gameProgressService.Progress.WalletData.UpdateData(this);
+        CoinsAmountChanged?.Invoke();
+    }
+    
+    public void Dispose() => 
+        _gameProgressService.ProgressLoaded -= OnProgressLoaded;
+    
+    private void OnProgressLoaded()
+    {
+        _coins = _gameProgressService.Progress.WalletData.Coins;
         CoinsAmountChanged?.Invoke();
     }
 }
