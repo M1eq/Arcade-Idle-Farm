@@ -22,15 +22,13 @@ public class Wallet : IWallet, IDisposable
 
         _coins += amount;
         _gameProgressService.Progress.WalletData.UpdateData(this);
+        
         CoinsAmountChanged?.Invoke();
     }
     
     public void Dispose() => 
         _gameProgressService.ProgressLoaded -= OnProgressLoaded;
     
-    private void OnProgressLoaded()
-    {
+    private void OnProgressLoaded() => 
         _coins = _gameProgressService.Progress.WalletData.Coins;
-        CoinsAmountChanged?.Invoke();
-    }
 }

@@ -20,7 +20,7 @@ public class GameProgressSaver : MonoBehaviour
         if (hasFocus == false)
             SaveProgress();
     }
-
+    
     private void OnApplicationPause(bool pauseStatus)
     {
         if (pauseStatus)

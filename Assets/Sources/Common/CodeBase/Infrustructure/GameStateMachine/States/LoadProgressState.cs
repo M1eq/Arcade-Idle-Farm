@@ -23,9 +23,14 @@ public class LoadProgressState : IState
         bool saveExists = await _gameProgressService.SavedProgressExists();
 
         if (saveExists)
+        {
             await _gameProgressService.LoadProgressAsync();
+        }
         else
+        {
             _gameProgressService.InitializeNewProgress();
+            await _gameProgressService.SaveProgressAsync();
+        }
 
         _gameStateMachine.Enter<LoadLevelState, string>(SceneNames.GAMELOOP_SCENE);
     }

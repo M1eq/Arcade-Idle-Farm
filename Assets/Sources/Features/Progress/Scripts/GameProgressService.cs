@@ -41,13 +41,13 @@ public sealed class GameProgressService : IGameProgressService
         
         var tasks = new List<UniTask>();
         
-        if (PlayerDataUpdated)
+        if (PlayerDataUpdated || await _saveSystem.ExistsAsync<PlayerData>() == false)
             tasks.Add(SaveDataAsync(Progress.PlayerData, _playerSaveCancellationToken));
 
-        if (WorldDataUpdated)
+        if (WorldDataUpdated || await _saveSystem.ExistsAsync<WorldData>() == false)
             tasks.Add(SaveDataAsync(Progress.WorldData, _worldSaveCancellationToken));
         
-        if (WalletDataUpdated)
+        if (WalletDataUpdated || await _saveSystem.ExistsAsync<WalletData>() == false)
             tasks.Add(SaveDataAsync(Progress.WalletData, _walletSaveCancellationToken));
 
         await UniTask.WhenAll(tasks);
@@ -56,11 +56,8 @@ public sealed class GameProgressService : IGameProgressService
     
     public async UniTask LoadProgressAsync()
     {
-        PlayerData playerData = _saveDataFactory.CreateNewPlayerData();
-        WorldData worldData = _saveDataFactory.CreateNewWorldData();
-        
-        // var playerData = await _saveSystem.LoadAsync<PlayerData>();
-        // var worldData = await _saveSystem.LoadAsync<WorldData>();
+        var playerData = await _saveSystem.LoadAsync<PlayerData>();
+        var worldData = await _saveSystem.LoadAsync<WorldData>();
         var walletData = await _saveSystem.LoadAsync<WalletData>();
 
         Progress = new GameProgress(playerData, worldData, walletData);
@@ -75,7 +72,7 @@ public sealed class GameProgressService : IGameProgressService
         var worldDataExists = await _saveSystem.ExistsAsync<WorldData>();
         var walletDataExists = await _saveSystem.ExistsAsync<WalletData>();
         
-        return playerDataExists || worldDataExists || walletDataExists;
+        return playerDataExists && worldDataExists && walletDataExists;
     }
 
     public void InitializeNewProgress()
@@ -86,6 +83,8 @@ public sealed class GameProgressService : IGameProgressService
         
         Progress = new GameProgress(playerData, worldData, walletData);
         _cachedProgress = Progress.Clone();
+        
+        ProgressLoaded?.Invoke();
     }
     
     private void CancelCurrentSaves()

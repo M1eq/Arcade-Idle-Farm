@@ -5,4 +5,5 @@ using UnityEngine;
 public class NewProgressConfig
 {
     [field: SerializeField] public NewWalletDataConfig NewWalletDataConfig { get; private set; }
+    [field: SerializeField] public NewPlayerDataConfig NewPlayerDataConfig { get; private set; }
 }

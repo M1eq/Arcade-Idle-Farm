@@ -48,8 +48,7 @@ public class InfrastructureInstaller : MonoInstaller
 
     private void BindInventoryService()
     {
-        Container.Bind<IInventory>()
-            .To<Inventory>()
+        Container.BindInterfacesTo<Inventory>()
             .AsSingle();
     }
 
