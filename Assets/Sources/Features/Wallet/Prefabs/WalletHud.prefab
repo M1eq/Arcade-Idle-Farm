@@ -300,7 +300,6 @@ GameObject:
   - component: {fileID: 3615950180047530274}
   - component: {fileID: 849291479957398004}
   - component: {fileID: 3221051820212363805}
-  - component: {fileID: 7544637315615142683}
   - component: {fileID: 3456438739786843816}
   - component: {fileID: 7418015263719057385}
   m_Layer: 5
@@ -394,20 +393,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &7544637315615142683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5251668920915402069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4adf9df333758b49849939cb76ac4e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <WalletHud>k__BackingField: {fileID: 7418015263719057385}
-  <WalletHudUpdater>k__BackingField: {fileID: 3456438739786843816}
 --- !u!114 &3456438739786843816
 MonoBehaviour:
   m_ObjectHideFlags: 0

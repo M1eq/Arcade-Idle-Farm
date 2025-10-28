@@ -37,13 +37,13 @@ public class HudFactory : IHudFactory
     public async UniTask CreateInventoryHud()
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InventoryHud);
-        var hudHolder = _instantiator.InstantiatePrefabForComponent<InventoryHudHolder>(prefab, _hudRoot);
+        _instantiator.InstantiatePrefabForComponent<InventoryHud>(prefab, _hudRoot);
     }
 
     public async UniTask CreateWalletHud()
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.WalletHud);
-        var hudHolder = _instantiator.InstantiatePrefabForComponent<WalletHudHolder>(prefab, _hudRoot);
+        _instantiator.InstantiatePrefabForComponent<WalletHud>(prefab, _hudRoot);
     }
 
     public async UniTask<InteractionButton> CreateInteractionButton(InteractionButtonType type, Action clickReaction)
