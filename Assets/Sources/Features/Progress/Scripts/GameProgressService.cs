@@ -15,26 +15,17 @@ public sealed class GameProgressService : IGameProgressService
     private GameProgress _cachedProgress;
     private readonly ISaveSystem _saveSystem;
     private readonly ISaveDataFactory _saveDataFactory;
-    private readonly IProgressReadersHandler _progressReadersHandler;
 
     private CancellationTokenSource _playerSaveCancellationToken;
     private CancellationTokenSource _worldSaveCancellationToken;
     private CancellationTokenSource _walletSaveCancellationToken;
 
-    public GameProgressService(ISaveSystem saveSystem, ISaveDataFactory saveDataFactory,
-        IProgressReadersHandler progressReadersHandler)
+    public GameProgressService(ISaveSystem saveSystem, ISaveDataFactory saveDataFactory)
     {
         _saveSystem = saveSystem;
         _saveDataFactory = saveDataFactory;
-        _progressReadersHandler = progressReadersHandler;
     }
-
-    public void ApplyProgress()
-    {
-        foreach (var progressReader in _progressReadersHandler.ProgressReaders)
-            progressReader.ApplyProgress(Progress);
-    }
-
+    
     public async UniTask SaveProgressAsync()
     {
         CancelCurrentSaves();

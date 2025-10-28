@@ -5,7 +5,6 @@ public interface IGameProgressService
 {
     public event Action ProgressLoaded;
     GameProgress Progress { get; }
-    void ApplyProgress();
     UniTask SaveProgressAsync();
     UniTask LoadProgressAsync();
     UniTask<bool> SavedProgressExists();

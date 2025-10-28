@@ -8,7 +8,6 @@ public class InfrastructureInstaller : MonoInstaller
         BindAssetProvider();
         BindSceneLoader();
         BindColorChanger();
-        BindProgressReadersHandler();
         BindFactories();
         BindInputService();
         BindInteractionButtonService();
@@ -31,13 +30,6 @@ public class InfrastructureInstaller : MonoInstaller
 
         Container.Bind<IGameProgressService>()
             .To<GameProgressService>()
-            .AsSingle();
-    }
-
-    private void BindProgressReadersHandler()
-    {
-        Container.Bind<IProgressReadersHandler>().
-            To<ProgressReadersHandler>()
             .AsSingle();
     }
     

@@ -27,28 +27,20 @@ public class LoadLevelState : IPayloadedState<string>
 
     private void OnLevelSceneLoaded() =>
         ConstructLevel().Forget();
-    
+
     private async UniTask ConstructLevel()
     {
         _gameFactory.CreateGameRoot();
         await _hudFactory.CreateHudRoot();
-
-        var walletHudTask = _hudFactory.CreateWalletHud();
-        var inventoryHudTask = _hudFactory.CreateInventoryHud();
-
+        
         await UniTask.WhenAll(
             _gameFactory.CreateLevel(),
             _gameFactory.CreatePlayer(),
+            _hudFactory.CreateInventoryHud(),
+            _hudFactory.CreateWalletHud(),
             _hudFactory.CreateJoystick()
         );
-
-        var walletHudHolder = await walletHudTask;
-        await inventoryHudTask;
-
-        await UniTask.WaitUntil(() => walletHudHolder.WalletHudUpdater.UpdatesSubscribed);
-        await UniTask.WaitForEndOfFrame();
         
-        _gameProgressService.ApplyProgress();
         _gameStateMachine.Enter<GameLoopState>();
     }
 }

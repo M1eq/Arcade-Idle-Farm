@@ -8,17 +8,14 @@ public class HudFactory : IHudFactory
     private readonly IInstantiator _instantiator;
     private readonly IAssetProvider _assetProvider;
     private readonly IStaticDataService _staticDataService;
-    private readonly IProgressReadersHandler _progressReadersHandler;
 
     private Transform _hudRoot;
 
-    public HudFactory(IInstantiator instantiator, IAssetProvider assetProvider, IStaticDataService staticDataService,
-        IProgressReadersHandler progressReadersHandler)
+    public HudFactory(IInstantiator instantiator, IAssetProvider assetProvider, IStaticDataService staticDataService)
     {
         _instantiator = instantiator;
         _assetProvider = assetProvider;
         _staticDataService = staticDataService;
-        _progressReadersHandler = progressReadersHandler;
     }
 
     public async UniTask CreateHudRoot()
@@ -40,19 +37,13 @@ public class HudFactory : IHudFactory
     public async UniTask CreateInventoryHud()
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InventoryHud);
-        
-        _instantiator.InstantiatePrefabForComponent<InventoryHud>(prefab, _hudRoot);
-        _progressReadersHandler.RegisterProgressReaders(prefab.gameObject);
+        var hudHolder = _instantiator.InstantiatePrefabForComponent<InventoryHudHolder>(prefab, _hudRoot);
     }
 
-    public async UniTask<WalletHudHolder> CreateWalletHud()
+    public async UniTask CreateWalletHud()
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.WalletHud);
-        
-       var hudHolder = _instantiator.InstantiatePrefabForComponent<WalletHudHolder>(prefab, _hudRoot);
-        _progressReadersHandler.RegisterProgressReaders(prefab.gameObject);
-
-        return hudHolder;
+        var hudHolder = _instantiator.InstantiatePrefabForComponent<WalletHudHolder>(prefab, _hudRoot);
     }
 
     public async UniTask<InteractionButton> CreateInteractionButton(InteractionButtonType type, Action clickReaction)
@@ -64,7 +55,7 @@ public class HudFactory : IHudFactory
 
         interactionButton.Initialize(interactionButtonConfig, clickReaction);
         interactionButton.transform.SetAsLastSibling();
-        
+
         return interactionButton;
     }
 

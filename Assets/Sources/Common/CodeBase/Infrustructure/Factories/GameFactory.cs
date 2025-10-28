@@ -10,18 +10,15 @@ public class GameFactory : IGameFactory
     private readonly IAssetProvider _assetProvider;
     private readonly IInstantiator _instantiator;
     private readonly IStaticDataService _staticDataService;
-    private readonly IProgressReadersHandler _progressReadersHandler;
 
     private Transform _gameRoot;
     private Vector3 _playerSpawnPosition;
 
-    public GameFactory(IInstantiator instantiator, IAssetProvider assetProvider, IStaticDataService staticDataService,
-        IProgressReadersHandler progressReadersHandler)
+    public GameFactory(IInstantiator instantiator, IAssetProvider assetProvider, IStaticDataService staticDataService)
     {
         _instantiator = instantiator;
         _assetProvider = assetProvider;
         _staticDataService = staticDataService;
-        _progressReadersHandler = progressReadersHandler;
     }
 
     public void CreateGameRoot()
@@ -35,8 +32,6 @@ public class GameFactory : IGameFactory
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Player);
 
         var player = _instantiator.InstantiatePrefabForComponent<Player>(prefab, _gameRoot);
-        _progressReadersHandler.RegisterProgressReaders(player.gameObject);
-
         var playerConfig = _staticDataService.GetGameConfig().PlayerConfig;
 
         var movement = player.GetComponent<PlayerMovement>();
@@ -59,8 +54,6 @@ public class GameFactory : IGameFactory
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Level);
 
         var level = _instantiator.InstantiatePrefabForComponent<Level>(prefab, _gameRoot);
-        _progressReadersHandler.RegisterProgressReaders(level.gameObject);
-
         GameConfig gameConfig = _staticDataService.GetGameConfig();
 
         level.InitializeCropZones(gameConfig.CropZoneConfig);
@@ -74,8 +67,6 @@ public class GameFactory : IGameFactory
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.FollowCamera);
 
         var followCamera = _instantiator.InstantiatePrefabForComponent<FollowCamera>(prefab, _gameRoot);
-        _progressReadersHandler.RegisterProgressReaders(followCamera.gameObject);
-
         var followCameraConfig = _staticDataService.GetGameConfig().PlayerConfig.FollowCameraConfig;
         var followCameraUpdater = followCamera.GetComponent<FollowCameraUpdater>();
 
