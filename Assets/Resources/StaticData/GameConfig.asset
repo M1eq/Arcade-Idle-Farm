@@ -43,4 +43,9 @@ MonoBehaviour:
     <SellMultiplierStep>k__BackingField: 300
   <NewProgressConfig>k__BackingField:
     <NewWalletDataConfig>k__BackingField:
-      <Coins>k__BackingField: 0
+      <Coins>k__BackingField: 500
+    <NewPlayerDataConfig>k__BackingField:
+      <InventoryData>k__BackingField:
+        <ItemsDataList>k__BackingField:
+        - <PlantType>k__BackingField: 0
+          <Amount>k__BackingField: 250

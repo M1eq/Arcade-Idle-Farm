@@ -14,23 +14,24 @@ public sealed class GameProgressService : IGameProgressService
 
     private GameProgress _cachedProgress;
     private readonly ISaveSystem _saveSystem;
-    private readonly IGameFactory _gameFactory;
     private readonly ISaveDataFactory _saveDataFactory;
-    
+    private readonly IProgressReadersHandler _progressReadersHandler;
+
     private CancellationTokenSource _playerSaveCancellationToken;
     private CancellationTokenSource _worldSaveCancellationToken;
     private CancellationTokenSource _walletSaveCancellationToken;
 
-    public GameProgressService(ISaveSystem saveSystem, IGameFactory gameFactory, ISaveDataFactory saveDataFactory)
+    public GameProgressService(ISaveSystem saveSystem, ISaveDataFactory saveDataFactory,
+        IProgressReadersHandler progressReadersHandler)
     {
         _saveSystem = saveSystem;
-        _gameFactory = gameFactory;
         _saveDataFactory = saveDataFactory;
+        _progressReadersHandler = progressReadersHandler;
     }
 
     public void ApplyProgress()
     {
-        foreach (var progressReader in _gameFactory.ProgressReaders)
+        foreach (var progressReader in _progressReadersHandler.ProgressReaders)
             progressReader.ApplyProgress(Progress);
     }
 
@@ -38,22 +39,22 @@ public sealed class GameProgressService : IGameProgressService
     {
         CancelCurrentSaves();
         ResetCancellationTokens();
-        
+
         var tasks = new List<UniTask>();
-        
+
         if (PlayerDataUpdated || await _saveSystem.ExistsAsync<PlayerData>() == false)
             tasks.Add(SaveDataAsync(Progress.PlayerData, _playerSaveCancellationToken));
 
         if (WorldDataUpdated || await _saveSystem.ExistsAsync<WorldData>() == false)
             tasks.Add(SaveDataAsync(Progress.WorldData, _worldSaveCancellationToken));
-        
+
         if (WalletDataUpdated || await _saveSystem.ExistsAsync<WalletData>() == false)
             tasks.Add(SaveDataAsync(Progress.WalletData, _walletSaveCancellationToken));
 
         await UniTask.WhenAll(tasks);
         _cachedProgress = Progress.Clone();
     }
-    
+
     public async UniTask LoadProgressAsync()
     {
         var playerData = await _saveSystem.LoadAsync<PlayerData>();
@@ -62,7 +63,7 @@ public sealed class GameProgressService : IGameProgressService
 
         Progress = new GameProgress(playerData, worldData, walletData);
         _cachedProgress = Progress.Clone();
-        
+
         ProgressLoaded?.Invoke();
     }
 
@@ -71,7 +72,7 @@ public sealed class GameProgressService : IGameProgressService
         var playerDataExists = await _saveSystem.ExistsAsync<PlayerData>();
         var worldDataExists = await _saveSystem.ExistsAsync<WorldData>();
         var walletDataExists = await _saveSystem.ExistsAsync<WalletData>();
-        
+
         return playerDataExists && worldDataExists && walletDataExists;
     }
 
@@ -80,13 +81,13 @@ public sealed class GameProgressService : IGameProgressService
         PlayerData playerData = _saveDataFactory.CreateNewPlayerData();
         WorldData worldData = _saveDataFactory.CreateNewWorldData();
         WalletData walletData = _saveDataFactory.CreateNewWalletData();
-        
+
         Progress = new GameProgress(playerData, worldData, walletData);
         _cachedProgress = Progress.Clone();
-        
+
         ProgressLoaded?.Invoke();
     }
-    
+
     private void CancelCurrentSaves()
     {
         _playerSaveCancellationToken?.Cancel();
@@ -100,10 +101,10 @@ public sealed class GameProgressService : IGameProgressService
         _worldSaveCancellationToken = new CancellationTokenSource();
         _walletSaveCancellationToken = new CancellationTokenSource();
     }
-    
+
     private async UniTask SaveDataAsync<T>(T data, CancellationTokenSource cancellationToken) where T : ISaveData
     {
-        try 
+        try
         {
             await _saveSystem.SaveAsync(data)
                 .AttachExternalCancellation(cancellationToken.Token);

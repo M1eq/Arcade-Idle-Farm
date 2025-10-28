@@ -15,6 +15,7 @@ public class GameProgressSaver : MonoBehaviour
     private void OnApplicationQuit() =>
         SaveProgress();
 
+#if !UNITY_EDITOR
     private void OnApplicationFocus(bool hasFocus)
     {
         if (hasFocus == false)
@@ -26,7 +27,7 @@ public class GameProgressSaver : MonoBehaviour
         if (pauseStatus)
             SaveProgress();
     }
-
+#endif
     private void SaveProgress() =>
         _gameProgressService.SaveProgressAsync().Forget();
 }

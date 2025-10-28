@@ -8,14 +8,17 @@ public class HudFactory : IHudFactory
     private readonly IInstantiator _instantiator;
     private readonly IAssetProvider _assetProvider;
     private readonly IStaticDataService _staticDataService;
+    private readonly IProgressReadersHandler _progressReadersHandler;
 
     private Transform _hudRoot;
 
-    public HudFactory(IInstantiator instantiator, IAssetProvider assetProvider, IStaticDataService staticDataService)
+    public HudFactory(IInstantiator instantiator, IAssetProvider assetProvider, IStaticDataService staticDataService,
+        IProgressReadersHandler progressReadersHandler)
     {
         _instantiator = instantiator;
         _assetProvider = assetProvider;
         _staticDataService = staticDataService;
+        _progressReadersHandler = progressReadersHandler;
     }
 
     public async UniTask CreateHudRoot()
@@ -30,45 +33,51 @@ public class HudFactory : IHudFactory
 
         var joystick = _instantiator.InstantiatePrefabForComponent<Joystick>(prefab, _hudRoot);
         var joystickConfig = _staticDataService.GetGameConfig().JoystickConfig;
-        
+
         joystick.Initialize(joystickConfig);
     }
-    
+
     public async UniTask CreateInventoryHud()
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InventoryHud);
-       _instantiator.InstantiatePrefabForComponent<InventoryHud>(prefab, _hudRoot);
+        
+        _instantiator.InstantiatePrefabForComponent<InventoryHud>(prefab, _hudRoot);
+        _progressReadersHandler.RegisterProgressReaders(prefab.gameObject);
     }
-    
-    public async UniTask CreateWalletHud()
+
+    public async UniTask<WalletHudHolder> CreateWalletHud()
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.WalletHud);
-        _instantiator.InstantiatePrefabForComponent<WalletHud>(prefab, _hudRoot);
+        
+       var hudHolder = _instantiator.InstantiatePrefabForComponent<WalletHudHolder>(prefab, _hudRoot);
+        _progressReadersHandler.RegisterProgressReaders(prefab.gameObject);
+
+        return hudHolder;
     }
-    
+
     public async UniTask<InteractionButton> CreateInteractionButton(InteractionButtonType type, Action clickReaction)
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InteractionButton);
 
         var interactionButtonConfig = _staticDataService.GetInteractionButtonConfig(type);
         var interactionButton = _instantiator.InstantiatePrefabForComponent<InteractionButton>(prefab, _hudRoot);
-        
+
         interactionButton.Initialize(interactionButtonConfig, clickReaction);
         interactionButton.transform.SetAsLastSibling();
         
         return interactionButton;
     }
-    
+
     public async UniTask<ItemCell> CreateItemCell(PlantType plantType, Transform parent)
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.ItemCell);
-        
+
         var itemCell = _instantiator.InstantiatePrefabForComponent<ItemCell>(prefab, parent);
         var itemConfig = _staticDataService.GetPlantConfig(plantType);
-        
+
         Sprite itemIcon = itemConfig.Icon;
         itemCell.SetIcon(itemIcon);
-        
+
         return itemCell;
     }
 }

@@ -8,6 +8,7 @@ public class InfrastructureInstaller : MonoInstaller
         BindAssetProvider();
         BindSceneLoader();
         BindColorChanger();
+        BindProgressReadersHandler();
         BindFactories();
         BindInputService();
         BindInteractionButtonService();
@@ -33,6 +34,13 @@ public class InfrastructureInstaller : MonoInstaller
             .AsSingle();
     }
 
+    private void BindProgressReadersHandler()
+    {
+        Container.Bind<IProgressReadersHandler>().
+            To<ProgressReadersHandler>()
+            .AsSingle();
+    }
+    
     private void BindWalletService()
     {
         Container.BindInterfacesTo<Wallet>()
