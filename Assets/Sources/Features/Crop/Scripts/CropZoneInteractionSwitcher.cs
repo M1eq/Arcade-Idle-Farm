@@ -5,15 +5,18 @@ public class CropZoneInteractionSwitcher : MonoBehaviour
 {
     [SerializeField] private CropZone _cropZone;
     [SerializeField] private CropZoneInteraction _cropZoneInteraction;
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Player>())
             Initialize(other);
     }
 
-    private void OnTriggerExit(Collider other) =>
-        ResetInteraction();
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Player>())
+            ResetInteraction();
+    }
 
     private void OnEnable() =>
         SubscribeUpdates();
