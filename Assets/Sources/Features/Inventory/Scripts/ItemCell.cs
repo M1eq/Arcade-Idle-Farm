@@ -7,14 +7,14 @@ public class ItemCell : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TMP_Text _amountTMP;
 
+    public void Show() => 
+        gameObject.SetActive(true);
+    
     public void SetIcon(Sprite iconSprite) => 
         _icon.sprite = iconSprite;
 
     public void SetAmount(int amount) => 
         _amountTMP.text = amount.ToString();
-
-    public void Show() => 
-        gameObject.SetActive(true);
     
     public void HideAndReset()
     {
