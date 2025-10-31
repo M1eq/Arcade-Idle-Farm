@@ -9,17 +9,17 @@ public class InteractionButton : MonoBehaviour
 
     public void Initialize(InteractionButtonStaticData config, Action clickReaction)
     {
-        InitializeIcon(config.Icon);
-        InitializeButton(clickReaction);
+        SetIcon(config.Icon);
+        SetButtonClickReaction(clickReaction);
     }
     
     private void OnDestroy() =>
         CleanUp();
     
-    private void InitializeIcon(Sprite icon) => 
+    private void SetIcon(Sprite icon) => 
         _icon.sprite = icon;
     
-    private void InitializeButton(Action onClick)
+    private void SetButtonClickReaction(Action onClick)
     {
         _interactionButton.onClick.AddListener(onClick.Invoke);
         _interactionButton.onClick.AddListener(() => Destroy(gameObject));
