@@ -20,7 +20,7 @@ public class HarvestAbility : MonoBehaviour, IAbility
         {
             CropTile cropTile = touchedCollider.GetComponentInParent<CropTile>();
 
-            if (cropTile.IsEmpty == false && cropTile.IsWatered)
+            if (cropTile.CropTileState == CropTileState.Watered)
                 cropTile.Harvest();
         }
     }

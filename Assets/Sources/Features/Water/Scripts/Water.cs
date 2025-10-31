@@ -6,7 +6,7 @@ public class Water : MonoBehaviour
     {
         if (other.TryGetComponent(out CropTile cropTile))
         {
-            if (cropTile.IsWatered == false)
+            if (cropTile.CropTileState == CropTileState.Sowed)
                 cropTile.Water();
         }
     }

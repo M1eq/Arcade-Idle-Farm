@@ -9,8 +9,7 @@ public class CropTile : MonoBehaviour
     public event UnityAction<CropTile> Watered;
     public event UnityAction<CropTile> Harvested;
 
-    public bool IsEmpty { get; private set; } = true;
-    public bool IsWatered { get; private set; }
+    public CropTileState CropTileState { get; private set; } = CropTileState.Empty;
 
     [SerializeField] private MeshRenderer _mesh;
 
@@ -40,7 +39,7 @@ public class CropTile : MonoBehaviour
 
     public async UniTask Sow()
     {
-        IsEmpty = false;
+        CropTileState = CropTileState.Sowed;
 
         _plant = await _iPlantFactory.Create(_plantType, transform);
         _plant.ScaleToSeed();
@@ -50,10 +49,7 @@ public class CropTile : MonoBehaviour
 
     public void Water()
     {
-        if (_plant == null)
-            return;
-        
-        IsWatered = true;
+        CropTileState = CropTileState.Watered;
         
         _plant.ScaleToWatered();
         _colorChanger.ChangeColorFor(_mesh, _config.WateredColor, _config.WateredDuration);
@@ -63,9 +59,6 @@ public class CropTile : MonoBehaviour
 
     public void Harvest()
     {
-        if (_plant == null)
-            return;
-        
         PlantStaticData plantData = _staticData.GetPlantConfig(_plantType);
         Destroy(_plant.gameObject);
         
@@ -75,9 +68,8 @@ public class CropTile : MonoBehaviour
         _colorChanger.ChangeColorFor(_mesh, _config.DefaultColor,
             _config.RestoreDefaultDurations[Random.Range(0, _config.RestoreDefaultDurations.Length)]);
 
-        IsEmpty = true;
-        IsWatered = false;
-
+        CropTileState = CropTileState.Empty;
+        
         Harvested?.Invoke(this);
     }
-}
+} 
