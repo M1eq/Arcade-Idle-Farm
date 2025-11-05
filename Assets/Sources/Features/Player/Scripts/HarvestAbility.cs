@@ -6,15 +6,20 @@ public class HarvestAbility : MonoBehaviour, IAbility
     [SerializeField] private Transform _sickle;
     [SerializeField] private LayerMask _mask;
     
+    private HarvestAbilityConfig _config;
+
     public void Apply() => 
         _animator.LaunchHarvestAnimation();
 
     public void Stop() => 
         _animator.StopHarvestAnimation();
 
-    public void ApplyHarvestOverlap()
+    public void SetConfig(HarvestAbilityConfig config) => 
+        _config = config;
+
+    public void ActivateOverlap()
     {
-        Collider[] touchedColliders = Physics.OverlapSphere(_sickle.position, 1, _mask);
+        Collider[] touchedColliders = Physics.OverlapSphere(_sickle.position, _config.HarvestRadius, _mask);
 
         foreach (Collider touchedCollider in touchedColliders)
         {
@@ -27,10 +32,10 @@ public class HarvestAbility : MonoBehaviour, IAbility
     
     private void OnDrawGizmosSelected()
     {
-        if (_sickle == null)
-            return;
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(_sickle.position, 1);
+        if (_sickle != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(_sickle.position, _config.HarvestRadius);
+        }
     }
 }

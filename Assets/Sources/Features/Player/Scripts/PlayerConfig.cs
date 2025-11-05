@@ -8,4 +8,5 @@ public class PlayerConfig
     [field: SerializeField] public PlayerAnimatorConfig AnimatorConfig { get; private set; }
     [field: SerializeField] public FollowCameraConfig FollowCameraConfig { get; private set; }
     [field: SerializeField] public BendingConfig BendingConfig { get; private set; }
+    [field: SerializeField] public HarvestAbilityConfig HarvestAbilityConfig { get; set; }
 }

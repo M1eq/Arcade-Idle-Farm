@@ -33,11 +33,13 @@ public class GameFactory : IGameFactory
 
         var player = _instantiator.InstantiatePrefabForComponent<Player>(prefab, _gameRoot);
         var playerConfig = _staticDataService.GetGameConfig().PlayerConfig;
-
+        
+        player.Initialize(playerConfig);
+        
         var movement = player.GetComponent<PlayerMovement>();
         movement.Initialize(playerConfig.MovementConfig);
 
-        var animator = player.GetComponent<PlayerAnimator>();
+        var animator = player.GetComponent<MovementAnimationUpdater>();
         animator.Initialize(playerConfig.AnimatorConfig);
 
         var bending = player.GetComponent<Bending>();

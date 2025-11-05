@@ -9,5 +9,5 @@ public class AbilitiesAnimationEvents : MonoBehaviour
         _seedParticle.Play();
 
     public void ApplyHarvestOverlap() => 
-        _harvestAbility.ApplyHarvestOverlap();
+        _harvestAbility.ActivateOverlap();
 }

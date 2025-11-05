@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zenject;
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -8,22 +7,9 @@ public class PlayerAnimator : MonoBehaviour
     private const int HarvestLayerIndex = 3;
     
     [SerializeField] private Animator _animator;
-
-    private readonly PlayerAnimationsHash _animationsHash = new();
     
     private int _currentMovementHash;
-    private IInputService _inputService;
-    private PlayerAnimatorConfig _config;
-
-    [Inject]
-    public void Construct(IInputService inputService)
-    {
-        _inputService = inputService;
-    }
-
-    public void Initialize(PlayerAnimatorConfig playerAnimatorConfig) => 
-        _config = playerAnimatorConfig;
-
+    
     public void LaunchWaterAnimation() => 
         _animator.SetLayerWeight(WaterLayerIndex, 1);
 
@@ -41,27 +27,22 @@ public class PlayerAnimator : MonoBehaviour
 
     public void StopHarvestAnimation() => 
         _animator.SetLayerWeight(HarvestLayerIndex, 0);
-
-    public void UpdateMovementAnimation()
-    {
-        bool isMoving = _inputService.Direction.magnitude > 0;
-        
-        int targetAnimationHash = isMoving ? _animationsHash.Run : _animationsHash.Idle;
-        float moveSpeedMultiplier = isMoving ? _config.RunSpeedMultiplier : _config.IdleSpeedMultiplier;
-
-        CrossFadeMovementAnimation(targetAnimationHash);
-        SetMoveSpeedMultiplier(moveSpeedMultiplier);
-    }
     
-    private void CrossFadeMovementAnimation(int targetAnimationHash)
+    public void LaunchRunAnimation(float crossFadeDuration = 0) => 
+        SetMovementAnimation(CharacterAnimationsHash.Run, crossFadeDuration);
+
+    public void LaunchIdleAnimation(float crossFadeDuration = 0) => 
+        SetMovementAnimation(CharacterAnimationsHash.Idle, crossFadeDuration);
+    
+    public void SetMovementAnimationSpeed(float moveSpeedValue) => 
+        _animator.SetFloat(CharacterAnimationsHash.MoveSpeedMultiplierParameter, moveSpeedValue);
+    
+    private void SetMovementAnimation(int targetAnimationHash, float crossFadeDuration)
     {
         if (_currentMovementHash == targetAnimationHash) 
             return;
         
-        _animator.CrossFade(targetAnimationHash, _config.CrossFadeDuration, 0);
+        _animator.CrossFade(targetAnimationHash,  crossFadeDuration, 0);
         _currentMovementHash = targetAnimationHash;
     }
-    
-    private void SetMoveSpeedMultiplier(float moveSpeedValue) => 
-        _animator.SetFloat(_animationsHash.MoveSpeedMultiplierParameter, moveSpeedValue);
 }
