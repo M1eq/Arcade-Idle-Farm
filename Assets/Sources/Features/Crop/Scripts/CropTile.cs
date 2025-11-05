@@ -63,7 +63,7 @@ public class CropTile : MonoBehaviour
         Destroy(_plant.gameObject);
         
         _collector.Collect(transform, plantData.CollectableType,
-            plantData.LootAmounts[Random.Range(0, plantData.LootAmounts.Length)]);
+            Random.Range(plantData.LootAmounts.x, plantData.LootAmounts.y + 1));
         
         _colorChanger.ChangeColorFor(_mesh, _config.DefaultColor,
             _config.RestoreDefaultDurations[Random.Range(0, _config.RestoreDefaultDurations.Length)]);
