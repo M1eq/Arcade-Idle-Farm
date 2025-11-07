@@ -29,7 +29,7 @@ public class HudFactory : IHudFactory
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Joystick);
 
         var joystick = _instantiator.InstantiatePrefabForComponent<Joystick>(prefab, _hudRoot);
-        var joystickConfig = _staticDataService.GetGameConfig().JoystickConfig;
+        var joystickConfig = _staticDataService.GameConfig.JoystickConfig;
 
         joystick.Initialize(joystickConfig);
     }
@@ -48,7 +48,7 @@ public class HudFactory : IHudFactory
 
     public async UniTask<InteractionButton> CreateInteractionButton(InteractionButtonType type, Action clickReaction)
     {
-        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InteractionButton);
+        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.InteractionButtonPrefab);
 
         var interactionButtonConfig = _staticDataService.GetInteractionButtonConfig(type);
         var interactionButton = _instantiator.InstantiatePrefabForComponent<InteractionButton>(prefab, _hudRoot);

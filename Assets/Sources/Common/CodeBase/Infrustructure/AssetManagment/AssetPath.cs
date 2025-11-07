@@ -5,7 +5,7 @@ public static class AssetPath
     public const string Player = "Player";
     public const string Level = "LevelPrefab";
     public const string FollowCamera = "FollowCamera";
-    public const string InteractionButton = "InteractionButton";
+    public const string InteractionButtonPrefab = "InteractionButtonPrefab";
     public const string HarvestCornParticle = "HarvestCornParticle";
     public const string InventoryHud = "InventoryHud";
     public const string WalletHud = "WalletHud";

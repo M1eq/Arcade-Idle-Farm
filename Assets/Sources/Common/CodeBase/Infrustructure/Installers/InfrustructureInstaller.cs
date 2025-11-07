@@ -4,8 +4,8 @@ public class InfrastructureInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        BindStaticDataService();
         BindAssetProvider();
+        BindStaticDataService();
         BindSceneLoader();
         BindColorChanger();
         BindFactories();

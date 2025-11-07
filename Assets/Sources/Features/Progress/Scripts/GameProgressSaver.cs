@@ -28,6 +28,7 @@ public class GameProgressSaver : MonoBehaviour
             SaveProgress();
     }
 #endif
+    
     private void SaveProgress() =>
         _gameProgressService.SaveProgressAsync().Forget();
 }

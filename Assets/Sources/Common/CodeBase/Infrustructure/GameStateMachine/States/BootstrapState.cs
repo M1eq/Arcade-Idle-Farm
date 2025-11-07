@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+
 public class BootstrapState : IState
 {
     private readonly IGameStateMachine _gameStateMachine;
@@ -18,15 +20,20 @@ public class BootstrapState : IState
 
     public void Enter() =>
         _sceneLoader.LoadScene(SceneNames.INITIAL_SCENE, OnInitialSceneLoaded);
-    
-    public void Exit() { }
 
-    private void OnInitialSceneLoaded()
+    public void Exit()
     {
-        _assetProvider.Initialize();
-        _staticDataService.LoadResources();
-        _inputService.BlockInput();
+    }
+
+    private void OnInitialSceneLoaded() =>
+        Bootstrap().Forget();
+
+    private async UniTask Bootstrap()
+    {
+        await _assetProvider.Initialize();
+        await _staticDataService.LoadStaticData();
         
+        _inputService.BlockInput();
         _gameStateMachine.Enter<LoadProgressState>();
     }
 }

@@ -1,7 +1,9 @@
+using Cysharp.Threading.Tasks;
+
 public interface IStaticDataService
 {
-    void LoadResources();
-    GameConfig GetGameConfig();
+    public GameConfig GameConfig { get; }
+    UniTask LoadStaticData();
     PlantStaticData GetPlantConfig(PlantType plantType);
     InteractionButtonStaticData GetInteractionButtonConfig(InteractionButtonType type);
 }

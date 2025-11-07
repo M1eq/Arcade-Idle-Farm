@@ -1,6 +1,6 @@
 ﻿public static class StaticDataPath
 {
-    public const string GameConfigPath = "StaticData/GameConfig";
-    public const string PlantConfigsPath = "StaticData/Plants";
-    public const string ButtonsConfigsPath = "StaticData/InteractionButtons";
+    public const string GameConfigPath = "GameConfig";
+    public const string PlantConfigLabel = "Plant";
+    public const string ButtonsConfigLabel = "InteractionButton";
 }

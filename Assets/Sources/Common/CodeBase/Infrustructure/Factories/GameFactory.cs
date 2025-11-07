@@ -32,7 +32,7 @@ public class GameFactory : IGameFactory
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Player);
 
         var player = _instantiator.InstantiatePrefabForComponent<Player>(prefab, _gameRoot);
-        var playerConfig = _staticDataService.GetGameConfig().PlayerConfig;
+        var playerConfig = _staticDataService.GameConfig.PlayerConfig;
         
         player.Initialize(playerConfig);
         
@@ -56,7 +56,7 @@ public class GameFactory : IGameFactory
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Level);
 
         var level = _instantiator.InstantiatePrefabForComponent<Level>(prefab, _gameRoot);
-        GameConfig gameConfig = _staticDataService.GetGameConfig();
+        GameConfig gameConfig = _staticDataService.GameConfig;
 
         level.InitializeCropZones(gameConfig.CropZoneConfig);
         level.InitializePlantSellZones(gameConfig.PlantSellZoneConfig);
@@ -69,7 +69,7 @@ public class GameFactory : IGameFactory
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.FollowCamera);
 
         var followCamera = _instantiator.InstantiatePrefabForComponent<FollowCamera>(prefab, _gameRoot);
-        var followCameraConfig = _staticDataService.GetGameConfig().PlayerConfig.FollowCameraConfig;
+        var followCameraConfig = _staticDataService.GameConfig.PlayerConfig.FollowCameraConfig;
         var followCameraUpdater = followCamera.GetComponent<FollowCameraUpdater>();
 
         followCameraUpdater.Initialize(followCameraConfig);

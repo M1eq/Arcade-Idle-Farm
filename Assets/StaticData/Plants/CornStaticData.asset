@@ -22,7 +22,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <SellPrice>k__BackingField: 2
-  <LootAmounts>k__BackingField: 010000000200000003000000
+  <LootAmounts>k__BackingField: {x: 1, y: 3}
   <ScaleConfig>k__BackingField:
     <SeedScaleDuration>k__BackingField: 1
     <WateredScaleDuration>k__BackingField: 1
