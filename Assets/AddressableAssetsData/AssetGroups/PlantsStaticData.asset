@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: PlantsStaticData
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
+  m_GroupName: PlantsStaticData
   m_GUID: 2e2068e968501d741b337e13999dddb6
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 0905fd37bfcf8cf48a4137a4fb4ff275
+    m_Address: CornStaticData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Plant
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6f5997821b0595d408ed3afbae1aef51, type: 2}
   m_SchemaSet:

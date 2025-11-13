@@ -7,12 +7,15 @@ public class StaticDataService : IStaticDataService
     public GameConfig GameConfig { get; private set; }
 
     private readonly IAssetProvider _assetProvider;
+    private readonly IGameProgressService _gameProgressService;
+    
     private Dictionary<PlantType, PlantStaticData> _plants;
     private Dictionary<InteractionButtonType, InteractionButtonStaticData> _interactionButtons;
 
-    public StaticDataService(IAssetProvider assetProvider)
+    public StaticDataService(IAssetProvider assetProvider, IGameProgressService gameProgressService)
     {
         _assetProvider = assetProvider;
+        _gameProgressService = gameProgressService;
     }
 
     public PlantStaticData GetPlantConfig(PlantType plantType) =>

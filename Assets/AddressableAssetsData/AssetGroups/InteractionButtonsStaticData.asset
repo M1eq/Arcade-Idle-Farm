@@ -12,9 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: InteractionButtonsStaticData
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets1
+  m_GroupName: InteractionButtonsStaticData
   m_GUID: 807e69811d62b4e4e8276d18ebb928bc
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1b5c81f1b238d344facbe9eb14ed3778
+    m_Address: SeedButtonStaticData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InteractionButton
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 205aa400bd06d0349a4e4e20e6620469
+    m_Address: HarvestButtonStaticData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InteractionButton
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29da152881cbc5345a17776f6b47f588
+    m_Address: WaterButtonStaticData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InteractionButton
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6f5997821b0595d408ed3afbae1aef51, type: 2}
   m_SchemaSet:

@@ -16,7 +16,12 @@ MonoBehaviour:
   m_GUID: 27412412845ef9c46980cc297b092516
   m_SerializeEntries:
   - m_GUID: 1421b1b6fc7631a48a888692576b68d5
-    m_Address: InteractionButton
+    m_Address: InteractionButtonPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 444ca4afb0ca5f44591f7f6354d3062a
+    m_Address: GameConfig
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

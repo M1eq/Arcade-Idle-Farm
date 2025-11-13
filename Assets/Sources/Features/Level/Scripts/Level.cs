@@ -5,29 +5,32 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     [field: SerializeField] public Transform PlayerSpawnPoint { get; private set; }
-
-    [SerializeField] private List<CropZone> _cropZones;
-    [SerializeField] private List<PlantsSellZone> _plantSellZones;
-
-    public void InitializeCropZones(CropZoneConfig cropZoneConfig)
+    [field: SerializeField] public LevelType LevelType { get; private set; }
+    
+    [field: Space(10), SerializeField] public List<CropZone> CropZones { get; private set; }
+    [field: SerializeField] public List<PlantsSellZone> PlantSellZones { get; private set; }
+    
+    public void InitializeInteractionZones(CropZoneConfig cropZoneConfig, PlantsSellZoneConfig plantSellZoneConfig)
     {
-        foreach (var cropZone in _cropZones)
+        foreach (var cropZone in CropZones)
             cropZone.Initialize(cropZoneConfig);
-    }
 
-    public void InitializePlantSellZones(PlantsSellZoneConfig plantSellZoneConfig)
-    {
-        foreach (var plantSellZone in _plantSellZones)
+        foreach (var plantSellZone in PlantSellZones)
             plantSellZone.Initialize(plantSellZoneConfig);
     }
 
+    public void RestoreLevelBy(LevelData levelData)
+    {
+        
+    }
+    
     [Button("Collect")]
     private void CollectInitializationTargets()
     {
-        _cropZones.Clear();
-        _plantSellZones.Clear();
+        CropZones.Clear();
+        PlantSellZones.Clear();
 
-        _cropZones.AddRange(GetComponentsInChildren<CropZone>(true));
-        _plantSellZones.AddRange(GetComponentsInChildren<PlantsSellZone>(true));
+        CropZones.AddRange(GetComponentsInChildren<CropZone>(true));
+        PlantSellZones.AddRange(GetComponentsInChildren<PlantsSellZone>(true));
     }
 }

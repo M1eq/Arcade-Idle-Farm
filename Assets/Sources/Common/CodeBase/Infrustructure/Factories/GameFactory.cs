@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -7,18 +6,21 @@ public class GameFactory : IGameFactory
 {
     private const string GameRootName = "GameRoot";
 
-    private readonly IAssetProvider _assetProvider;
     private readonly IInstantiator _instantiator;
+    private readonly IAssetProvider _assetProvider;
     private readonly IStaticDataService _staticDataService;
+    private readonly IGameProgressService _gameProgressService;
 
     private Transform _gameRoot;
     private Vector3 _playerSpawnPosition;
 
-    public GameFactory(IInstantiator instantiator, IAssetProvider assetProvider, IStaticDataService staticDataService)
+    public GameFactory(IInstantiator instantiator, IAssetProvider assetProvider,
+        IStaticDataService staticDataService, IGameProgressService gameProgressService)
     {
         _instantiator = instantiator;
         _assetProvider = assetProvider;
         _staticDataService = staticDataService;
+        _gameProgressService = gameProgressService;
     }
 
     public void CreateGameRoot()
@@ -33,9 +35,9 @@ public class GameFactory : IGameFactory
 
         var player = _instantiator.InstantiatePrefabForComponent<Player>(prefab, _gameRoot);
         var playerConfig = _staticDataService.GameConfig.PlayerConfig;
-        
+
         player.Initialize(playerConfig);
-        
+
         var movement = player.GetComponent<PlayerMovement>();
         movement.Initialize(playerConfig.MovementConfig);
 
@@ -51,15 +53,18 @@ public class GameFactory : IGameFactory
         await CreateFollowCamera(player.transform);
     }
 
-    public async UniTask CreateLevel()
+    public async UniTask CreateLevel(LevelType levelType)
     {
         GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Level);
-
         var level = _instantiator.InstantiatePrefabForComponent<Level>(prefab, _gameRoot);
-        GameConfig gameConfig = _staticDataService.GameConfig;
 
-        level.InitializeCropZones(gameConfig.CropZoneConfig);
-        level.InitializePlantSellZones(gameConfig.PlantSellZoneConfig);
+        GameConfig gameConfig = _staticDataService.GameConfig;
+        WorldData worldData = _gameProgressService.Progress.WorldData;
+
+        level.InitializeInteractionZones(gameConfig.CropZoneConfig, gameConfig.PlantSellZoneConfig);
+
+        if (worldData.TryGetLevelDataFor(levelType, out LevelData levelData))
+            level.RestoreLevelBy(levelData);
 
         _playerSpawnPosition = level.PlayerSpawnPoint.position;
     }
