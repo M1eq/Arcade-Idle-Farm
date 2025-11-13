@@ -5,10 +5,12 @@ using Zenject;
 public class GameProgressSaver : MonoBehaviour
 {
     private IGameProgressService _gameProgressService;
+    private ISessionInfo _sessionInfo;
 
     [Inject]
-    public void Construct(IGameProgressService gameProgressService)
+    public void Construct(IGameProgressService gameProgressService, ISessionInfo sessionInfo)
     {
+        _sessionInfo = sessionInfo;
         _gameProgressService = gameProgressService;
     }
 
@@ -29,6 +31,15 @@ public class GameProgressSaver : MonoBehaviour
     }
 #endif
     
-    private void SaveProgress() => 
+    private void SaveProgress()
+    {
+        UpdateLevelData();
         _gameProgressService.SaveProgressAsync().Forget();
+    }
+
+    private void UpdateLevelData()
+    {
+        _gameProgressService.Progress.WorldData.UpdateLevelDataFor(
+            _sessionInfo.Level.LevelType, _sessionInfo.Level);
+    }
 }
