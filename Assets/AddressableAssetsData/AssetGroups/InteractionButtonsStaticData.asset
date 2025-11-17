@@ -19,19 +19,19 @@ MonoBehaviour:
     m_Address: SeedButtonStaticData
     m_ReadOnly: 0
     m_SerializedLabels:
-    - InteractionButton
+    - InteractionButtonStaticData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 205aa400bd06d0349a4e4e20e6620469
     m_Address: HarvestButtonStaticData
     m_ReadOnly: 0
     m_SerializedLabels:
-    - InteractionButton
+    - InteractionButtonStaticData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 29da152881cbc5345a17776f6b47f588
     m_Address: WaterButtonStaticData
     m_ReadOnly: 0
     m_SerializedLabels:
-    - InteractionButton
+    - InteractionButtonStaticData
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6f5997821b0595d408ed3afbae1aef51, type: 2}

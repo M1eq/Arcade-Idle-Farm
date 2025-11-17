@@ -40,6 +40,6 @@ public class GameProgressSaver : MonoBehaviour
     private void UpdateLevelData()
     {
         _gameProgressService.Progress.WorldData.UpdateLevelDataFor(
-            _sessionInfo.Level.LevelType, _sessionInfo.Level);
+            _sessionInfo.CurrentLevel.LevelType, _sessionInfo.CurrentLevel);
     }
 }

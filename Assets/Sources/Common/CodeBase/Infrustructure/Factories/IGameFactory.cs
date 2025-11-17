@@ -4,5 +4,5 @@ public interface IGameFactory
 {
     void CreateGameRoot();
     UniTask CreatePlayer();
-    UniTask CreateLevel(LevelType levelType);
+    UniTask<Level> CreateLevel(LevelType levelType);
 }

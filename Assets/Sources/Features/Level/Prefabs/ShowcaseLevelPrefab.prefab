@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6449610678251746638}
   - component: {fileID: 3244564807901592218}
   m_Layer: 0
-  m_Name: LevelPrefab
+  m_Name: ShowcaseLevelPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PlayerSpawnPoint>k__BackingField: {fileID: 4826193422439333213}
-  _cropZones:
+  <LevelType>k__BackingField: 0
+  <CropZones>k__BackingField:
   - {fileID: 6359815444576866645}
-  _plantSellZones:
+  <PlantSellZones>k__BackingField:
   - {fileID: 2753021137983252283}
 --- !u!1 &8510879523254574788
 GameObject:

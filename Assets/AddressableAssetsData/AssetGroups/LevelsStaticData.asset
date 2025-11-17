@@ -10,20 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: PlantsStaticData
+  m_Name: LevelsStaticData
   m_EditorClassIdentifier: 
-  m_GroupName: PlantsStaticData
-  m_GUID: 2e2068e968501d741b337e13999dddb6
-  m_SerializeEntries:
-  - m_GUID: 0905fd37bfcf8cf48a4137a4fb4ff275
-    m_Address: CornStaticData
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PlantStaticData
-    FlaggedDuringContentUpdateRestriction: 0
+  m_GroupName: LevelsStaticData
+  m_GUID: bd252ebc8d09a55419dacd82b26ec7af
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6f5997821b0595d408ed3afbae1aef51, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 7f39e75bab942364c9755fc5c5eccfd6, type: 2}
-    - {fileID: 11400000, guid: 110209f83135b684baa5441f9eab58a8, type: 2}
+    - {fileID: 11400000, guid: 74e1731e9c1a72b4b8d682eb457e592a, type: 2}
+    - {fileID: 11400000, guid: 9e9b9a5b384dd51458e7570b9a77ba80, type: 2}

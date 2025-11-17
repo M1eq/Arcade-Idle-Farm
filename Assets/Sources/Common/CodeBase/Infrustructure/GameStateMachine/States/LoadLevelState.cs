@@ -7,10 +7,13 @@ public class LoadLevelState : IPayloadedState<string>
     private readonly IHudFactory _hudFactory;
     private readonly IGameFactory _gameFactory;
     private readonly IGameProgressService _gameProgressService;
+    private readonly ISessionInfo _sessionInfo;
 
     public LoadLevelState(IGameStateMachine gameStateMachine, IHudFactory hudFactory,
-        IGameFactory gameFactory, SceneLoader sceneLoader, IGameProgressService gameProgressService)
+        IGameFactory gameFactory, SceneLoader sceneLoader, IGameProgressService gameProgressService,
+        ISessionInfo sessionInfo)
     {
+        _sessionInfo = sessionInfo;
         _gameProgressService = gameProgressService;
         _hudFactory = hudFactory;
         _gameFactory = gameFactory;
@@ -32,15 +35,28 @@ public class LoadLevelState : IPayloadedState<string>
     {
         _gameFactory.CreateGameRoot();
         await _hudFactory.CreateHudRoot();
-        
+
         await UniTask.WhenAll(
-            _gameFactory.CreateLevel(),
+            CreateLevelPrefab(),
             _gameFactory.CreatePlayer(),
             _hudFactory.CreateInventoryHud(),
             _hudFactory.CreateWalletHud(),
             _hudFactory.CreateJoystick()
         );
-        
+
         _gameStateMachine.Enter<GameLoopState>();
+    }
+
+    private async UniTask CreateLevelPrefab()
+    {
+        WorldData worldData = _gameProgressService.Progress.WorldData;
+        LevelType lastSavedLevelType = worldData.LastSavedLevelType;
+
+        Level level = await _gameFactory.CreateLevel(lastSavedLevelType);
+
+        if (worldData.TryGetLevelDataFor(lastSavedLevelType, out LevelData levelData))
+            level.RestoreLevelBy(levelData);
+        
+        _sessionInfo.UpdateInfo(level);
     }
 }

@@ -7,16 +7,18 @@ public class StaticDataService : IStaticDataService
     public GameConfig GameConfig { get; private set; }
 
     private readonly IAssetProvider _assetProvider;
-    private readonly IGameProgressService _gameProgressService;
     
+    private Dictionary<LevelType, LevelStaticData> _levels;
     private Dictionary<PlantType, PlantStaticData> _plants;
     private Dictionary<InteractionButtonType, InteractionButtonStaticData> _interactionButtons;
 
-    public StaticDataService(IAssetProvider assetProvider, IGameProgressService gameProgressService)
+    public StaticDataService(IAssetProvider assetProvider)
     {
         _assetProvider = assetProvider;
-        _gameProgressService = gameProgressService;
     }
+
+    public LevelStaticData GetLevelConfig(LevelType type) => 
+        _levels[type];
 
     public PlantStaticData GetPlantConfig(PlantType plantType) =>
         _plants[plantType];
@@ -27,6 +29,9 @@ public class StaticDataService : IStaticDataService
     public async UniTask LoadStaticData()
     {
         GameConfig = await _assetProvider.Load<GameConfig>(StaticDataPath.GameConfigPath);
+        
+        _levels = await LoadDictionary<LevelStaticData, LevelType>(
+            StaticDataPath.LevelConfigLabel, x => x.LevelType);
         
         _plants = await LoadDictionary<PlantStaticData, PlantType>(
             StaticDataPath.PlantConfigLabel, x => x.PlantType);

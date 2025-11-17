@@ -53,20 +53,18 @@ public class GameFactory : IGameFactory
         await CreateFollowCamera(player.transform);
     }
 
-    public async UniTask CreateLevel(LevelType levelType)
+    public async UniTask<Level> CreateLevel(LevelType levelType)
     {
-        GameObject prefab = await _assetProvider.Load<GameObject>(AssetPath.Level);
+        LevelStaticData levelConfig = _staticDataService.GetLevelConfig(levelType);
+        GameConfig gameConfig = _staticDataService.GameConfig; 
+        
+        GameObject prefab = await _assetProvider.Load<GameObject>(levelConfig.PrefabReference);
         var level = _instantiator.InstantiatePrefabForComponent<Level>(prefab, _gameRoot);
-
-        GameConfig gameConfig = _staticDataService.GameConfig;
-        WorldData worldData = _gameProgressService.Progress.WorldData;
-
+        
         level.InitializeInteractionZones(gameConfig.CropZoneConfig, gameConfig.PlantSellZoneConfig);
-
-        if (worldData.TryGetLevelDataFor(levelType, out LevelData levelData))
-            level.RestoreLevelBy(levelData);
-
         _playerSpawnPosition = level.PlayerSpawnPoint.position;
+
+        return level;
     }
 
     private async UniTask CreateFollowCamera(Transform followTarget)

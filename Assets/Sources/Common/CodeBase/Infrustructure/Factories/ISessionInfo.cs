@@ -1,5 +1,5 @@
 ﻿public interface ISessionInfo
 {
-    Level Level { get; }
+    Level CurrentLevel { get; }
     void UpdateInfo(Level level);
 }

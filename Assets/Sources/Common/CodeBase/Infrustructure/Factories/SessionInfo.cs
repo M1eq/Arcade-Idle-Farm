@@ -1,7 +1,7 @@
 ﻿public class SessionInfo : ISessionInfo
 {
-    public Level Level { get; private set; }
+    public Level CurrentLevel { get; private set; }
 
     public void UpdateInfo(Level level) => 
-        Level = level;
+        CurrentLevel = level;
 }

@@ -16,6 +16,14 @@ public class InfrastructureInstaller : MonoInstaller
         BindSellService();
         BindWalletService();
         BindProgressService();
+        BindSessionInfoService();
+    }
+
+    private void BindSessionInfoService()
+    {
+        Container.Bind<ISessionInfo>()
+            .To<SessionInfo>()
+            .AsSingle();
     }
 
     private void BindProgressService()
