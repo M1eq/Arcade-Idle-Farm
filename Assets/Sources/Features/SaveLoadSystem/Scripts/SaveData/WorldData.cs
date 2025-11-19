@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public sealed class WorldData : ISaveData
 {
-    [SerializeField] private List<LevelDataContainer> _levelDataContainers;
+    [SerializeField] private List<LevelDataContainer> _levelDataContainers = new();
     [field: SerializeField] public LevelType LastSavedLevelType { get; private set; } = LevelType.ShowcaseLevel;
 
     public bool EqualsData(WorldData data) =>
