@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7290791004177796509}
   - component: {fileID: 3531149124824956787}
   - component: {fileID: 1527432057457801154}
+  - component: {fileID: 1946096789620351389}
   m_Layer: 6
   m_Name: CropTile
   m_TagString: Untagged
@@ -123,6 +124,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mesh: {fileID: 7290791004177796509}
+--- !u!114 &1946096789620351389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449501958302611373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6a079c8c639a144b50d0d12746101f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: CropTile_951f26650b17f824186c08d34d408b73
 --- !u!1 &8361231898780447493
 GameObject:
   m_ObjectHideFlags: 0
