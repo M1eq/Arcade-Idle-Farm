@@ -38,9 +38,9 @@ public class PlantsSellZone : MonoBehaviour
     }
 
     private void ObservedTriggerExit(Collider other) =>
-        Reset();
+        ResetSellMultiplier();
     
-    private void Reset()
+    private void ResetSellMultiplier()
     {
         _canSellPlants = false;
         _sellMultiplier = 0;
