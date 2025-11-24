@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3998191710512484489}
   - component: {fileID: 934407875529716538}
   - component: {fileID: 4302149794280188499}
+  - component: {fileID: 8086655174164375115}
   m_Layer: 6
   m_Name: CropZone
   m_TagString: Untagged
@@ -128,6 +129,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cropZone: {fileID: 3998191710512484489}
   _cropZoneInteraction: {fileID: 934407875529716538}
+--- !u!114 &8086655174164375115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76203351680985122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6a079c8c639a144b50d0d12746101f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: 
 --- !u!1001 &6442087342025125
 PrefabInstance:
   m_ObjectHideFlags: 0
