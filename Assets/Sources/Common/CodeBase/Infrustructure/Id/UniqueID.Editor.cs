@@ -28,7 +28,7 @@ public partial class UniqueID
 
     private void GenerateId()
     {
-        string generatedId = $"{gameObject.scene.name}_{GUID.Generate().ToString()}";
+        string generatedId = $"{gameObject.scene.name}_{gameObject.name}_{GUID.Generate().ToString()}";
         Id = generatedId;
 
         if (Application.isPlaying == false)

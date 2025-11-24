@@ -326,6 +326,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5347589938304823100}
+  - component: {fileID: 5279148661784748496}
+  - component: {fileID: 154111713439284688}
   m_Layer: 0
   m_Name: Chunk1
   m_TagString: Untagged
@@ -356,6 +358,34 @@ Transform:
   - {fileID: 1471477202131865040}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5279148661784748496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003288323450486304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a5a8bd0a655e14a962c9f51f38f7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uniqueID: {fileID: 154111713439284688}
+  <CropZones>k__BackingField: []
+  <PlantSellZones>k__BackingField: []
+--- !u!114 &154111713439284688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003288323450486304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6a079c8c639a144b50d0d12746101f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: 
 --- !u!1001 &257119331065489080
 PrefabInstance:
   m_ObjectHideFlags: 0

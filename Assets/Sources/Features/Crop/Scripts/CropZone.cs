@@ -7,8 +7,11 @@ public class CropZone : MonoBehaviour
     public event UnityAction InteractionFinished;
 
     public CropZoneInteractionType InteractionType { get; private set; } = CropZoneInteractionType.Seed;
-
+    public string ID => _uniqueID.Id;
+    
     [SerializeField] private PlantType _plantType;
+    [SerializeField] private UniqueID _uniqueID;
+    
     [Space(10), SerializeField] private CropTile[] _cropTiles;
 
     private readonly List<CropTile> _sowedCropTiles = new();

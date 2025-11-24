@@ -61,7 +61,7 @@ public class GameFactory : IGameFactory
         GameObject prefab = await _assetProvider.Load<GameObject>(levelConfig.PrefabReference);
         var level = _instantiator.InstantiatePrefabForComponent<Level>(prefab, _gameRoot);
         
-        level.InitializeInteractionZones(gameConfig.CropZoneConfig, gameConfig.PlantSellZoneConfig);
+        level.SetChunksSettings(gameConfig.CropZoneConfig, gameConfig.PlantSellZoneConfig);
         _playerSpawnPosition = level.PlayerSpawnPoint.position;
 
         return level;

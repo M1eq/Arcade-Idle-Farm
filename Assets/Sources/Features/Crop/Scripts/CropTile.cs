@@ -10,7 +10,9 @@ public class CropTile : MonoBehaviour
     public event UnityAction<CropTile> Harvested;
 
     public CropTileState CropTileState { get; private set; } = CropTileState.Empty;
-
+    public string ID => _uniqueID.Id;
+    
+    [SerializeField] private UniqueID _uniqueID;
     [SerializeField] private MeshRenderer _mesh;
 
     private IStaticDataService _staticData;

@@ -3,22 +3,22 @@ using UnityEngine;
 
 public partial class Level : MonoBehaviour
 {
-    [field: SerializeField] public Transform PlayerSpawnPoint { get; private set; }
     [field: SerializeField] public LevelType LevelType { get; private set; }
-
-    [field: Space(10), SerializeField] public List<CropZone> CropZones { get; private set; }
-    [field: SerializeField] public List<PlantsSellZone> PlantSellZones { get; private set; }
+    [field: SerializeField] public Transform PlayerSpawnPoint { get; private set; }
+    [field: Space(10), SerializeField] public List<Chunk> Chunks { get; private set; }
     
-    public void InitializeInteractionZones(CropZoneConfig cropZoneConfig, PlantsSellZoneConfig plantSellZoneConfig)
+    public void SetChunksSettings(CropZoneConfig cropZoneConfig, PlantsSellZoneConfig plantSellZoneConfig)
     {
-        foreach (var cropZone in CropZones)
-            cropZone.Initialize(cropZoneConfig);
-
-        foreach (var plantSellZone in PlantSellZones)
-            plantSellZone.Initialize(plantSellZoneConfig);
+        foreach (var chunk in Chunks) 
+            chunk.SetInteractionZonesSettings(cropZoneConfig, plantSellZoneConfig);
     }
-
+    
     public void RestoreLevelBy(LevelData levelData)
     {
+        foreach (var chunk in Chunks)
+        {
+            if (levelData.TryGetChunkDataBy(chunk.ID, out var chunkData)) 
+                chunk.RestoreChunkBy(chunkData);
+        }
     }
 }

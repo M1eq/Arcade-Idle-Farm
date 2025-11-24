@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _plantType: 0
+  _uniqueID: {fileID: 8086655174164375115}
   _cropTiles:
   - {fileID: 315831660379494813}
   - {fileID: 8039092001446846487}

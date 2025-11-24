@@ -6,24 +6,40 @@ public partial class Level
 {
 # if UNITY_EDITOR
 
+    #region Buttons
+
     [Button("Collect And SetID")]
-    private void CollectInitializationTargets()
+    private void CollectTargetsAndSetID()
     {
-        CropZones.Clear();
-        PlantSellZones.Clear();
-
-        CropZones.AddRange(GetComponentsInChildren<CropZone>(true));
-        PlantSellZones.AddRange(GetComponentsInChildren<PlantsSellZone>(true));
-
-        UpdateIDFor(CropZones);
-        UpdateIDFor(PlantSellZones);
+        CollectChunks();
+        CollectChunkTargets();
+        UpdateIDFor(Chunks);
     }
 
-    [Button("ResetIDS")]
-    private void ResetInitializationTargetsID()
+    [Button("Reset IDS")]
+    private void ResetTargetsID() =>
+        ResetIDFor(Chunks);
+
+    #endregion
+
+    #region Logic
+    
+    private void CollectChunks()
     {
-        ResetIDFor(CropZones);
-        ResetIDFor(PlantSellZones);
+        Chunks.Clear();
+        Chunks.AddRange(GetComponentsInChildren<Chunk>(true));
+    }
+
+    private void CollectChunkTargets()
+    {
+        foreach (var chunk in Chunks)
+        {
+            chunk.CropZones.Clear();
+            chunk.PlantSellZones.Clear();
+
+            chunk.CropZones.AddRange(chunk.GetComponentsInChildren<CropZone>(true));
+            chunk.PlantSellZones.AddRange(chunk.GetComponentsInChildren<PlantsSellZone>(true));
+        }
     }
 
     private void UpdateIDFor<T>(List<T> objectsWithId) where T : MonoBehaviour
@@ -48,5 +64,7 @@ public partial class Level
         }
     }
 
+    #endregion
+    
 #endif
 }
