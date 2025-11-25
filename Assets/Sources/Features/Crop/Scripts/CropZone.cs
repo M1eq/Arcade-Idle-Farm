@@ -20,9 +20,22 @@ public class CropZone : MonoBehaviour
     
     private CropZoneConfig _config;
 
+    public void RestoreBy(CropZoneData cropZoneData)
+    {
+        InteractionType = cropZoneData.InteractionType;
+        
+        foreach (var cropTile in _cropTiles)
+        {
+            if (cropZoneData.TryGetCropTileDataBy(cropTile.ID, out var cropTileData)) 
+                cropTile.RestoreBy(cropTileData);
+            
+            //если cropTile нет в data, восстанавливать ему минимальное состояние других тайлов
+        }
+    }
+    
     public void Initialize(CropZoneConfig cropZoneConfig) =>
         _config = cropZoneConfig;
-
+    
     private void Start() =>
         InitializeCropTiles();
 

@@ -1,7 +1,9 @@
+using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
+using Random = UnityEngine.Random;
 
 public class CropTile : MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class CropTile : MonoBehaviour
 
     public CropTileState CropTileState { get; private set; } = CropTileState.Empty;
     public string ID => _uniqueID.Id;
-    
+
     [SerializeField] private UniqueID _uniqueID;
     [SerializeField] private MeshRenderer _mesh;
 
@@ -39,6 +41,23 @@ public class CropTile : MonoBehaviour
         _config = config;
     }
 
+    public void RestoreBy(CropTileData cropTileData)
+    {
+        switch (cropTileData.CropTileState)
+        {
+            case CropTileState.Sowed:
+                Sow().Forget();
+                break;
+            
+            case CropTileState.Watered:
+                Water();
+                break;
+            
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
     public async UniTask Sow()
     {
         CropTileState = CropTileState.Sowed;
@@ -52,7 +71,7 @@ public class CropTile : MonoBehaviour
     public void Water()
     {
         CropTileState = CropTileState.Watered;
-        
+
         _plant.ScaleToWatered();
         _colorChanger.ChangeColorFor(_mesh, _config.WateredColor, _config.WateredDuration);
 
@@ -63,15 +82,15 @@ public class CropTile : MonoBehaviour
     {
         PlantStaticData plantData = _staticData.GetPlantConfig(_plantType);
         Destroy(_plant.gameObject);
-        
+
         _collector.Collect(transform, plantData.CollectableType,
             Random.Range(plantData.LootAmounts.x, plantData.LootAmounts.y + 1));
-        
+
         _colorChanger.ChangeColorFor(_mesh, _config.DefaultColor,
             _config.RestoreDefaultDurations[Random.Range(0, _config.RestoreDefaultDurations.Length)]);
 
         CropTileState = CropTileState.Empty;
-        
+
         Harvested?.Invoke(this);
     }
-} 
+}

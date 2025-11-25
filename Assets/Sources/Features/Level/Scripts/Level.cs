@@ -18,7 +18,7 @@ public partial class Level : MonoBehaviour
         foreach (var chunk in Chunks)
         {
             if (levelData.TryGetChunkDataBy(chunk.ID, out var chunkData)) 
-                chunk.RestoreChunkBy(chunkData);
+                chunk.RestoreBy(chunkData);
         }
     }
 }

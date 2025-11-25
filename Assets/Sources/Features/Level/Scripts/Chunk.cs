@@ -18,7 +18,12 @@ public class Chunk : MonoBehaviour
             plantSellZone.Initialize(plantSellZoneConfig);
     }
 
-    public void RestoreChunkBy(ChunkData chunkData)
+    public void RestoreBy(ChunkData chunkData)
     {
+        foreach (var cropZone in CropZones)
+        {
+            if (chunkData.TryGetCropZoneDataBy(cropZone.ID, out var cropZoneData)) 
+                cropZone.RestoreBy(cropZoneData);
+        }
     }
 }
