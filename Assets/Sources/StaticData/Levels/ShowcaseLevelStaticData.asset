@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ShowcaseLevelStaticData
   m_EditorClassIdentifier: 
   <LevelType>k__BackingField: 0
-  <Prefab>k__BackingField:
-    m_AssetGUID: 
+  <PrefabReference>k__BackingField:
+    m_AssetGUID: 718f3ae6f3978e84bbb0468ec3710dfa
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 

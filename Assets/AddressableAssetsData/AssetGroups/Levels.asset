@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Packed Assets
   m_GUID: cf9b317f8be55034d95a978d368f9d53
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 718f3ae6f3978e84bbb0468ec3710dfa
+    m_Address: ShowcaseLevelPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6f5997821b0595d408ed3afbae1aef51, type: 2}
   m_SchemaSet:

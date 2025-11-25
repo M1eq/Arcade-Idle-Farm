@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: LevelsStaticData
   m_GUID: bd252ebc8d09a55419dacd82b26ec7af
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: a18408f5840fcfd4d944257756b33971
+    m_Address: ShowcaseLevelStaticData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LevelStaticData
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6f5997821b0595d408ed3afbae1aef51, type: 2}
   m_SchemaSet:
