@@ -28,7 +28,7 @@ public partial class Level : MonoBehaviour
         
         foreach (var chunk in Chunks)
         {
-            ChunkData chunkData = new(chunk.GetCropZonesDataList());
+            ChunkData chunkData = new(chunk.ID, chunk.GetCropZonesDataList());
             chunksDataList.Add(chunkData);
         }
         

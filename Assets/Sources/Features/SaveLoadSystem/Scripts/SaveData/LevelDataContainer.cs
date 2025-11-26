@@ -13,6 +13,12 @@ public sealed class LevelDataContainer
         LevelData = levelData;
     }
     
+    public LevelDataContainer Clone()
+    {
+        LevelData levelDataClone = LevelData.Clone();
+        return new LevelDataContainer(LevelType, levelDataClone);
+    }
+    
     public void UpdateLevelData(LevelData levelData) => 
         LevelData = levelData;
 }

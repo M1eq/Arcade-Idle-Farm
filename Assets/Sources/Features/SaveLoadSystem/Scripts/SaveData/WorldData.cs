@@ -6,14 +6,27 @@ using UnityEngine;
 [Serializable]
 public sealed class WorldData : ISaveData
 {
-    [SerializeField] private List<LevelDataContainer> _levelDataContainers = new();
-    [field: SerializeField] public LevelType LastSavedLevelType { get; private set; } = LevelType.ShowcaseLevel;
+    [SerializeField] private List<LevelDataContainer> _levelDataContainers;
+    [field: SerializeField] public LevelType LastSavedLevelType { get; private set; }
+
+    public WorldData(List<LevelDataContainer> levelDataContainers, LevelType lastSavedLevelType)
+    {
+        _levelDataContainers = levelDataContainers;
+        LastSavedLevelType = lastSavedLevelType;
+    }
     
     public bool EqualsData(WorldData data) =>
         true;
 
-    public WorldData Clone() =>
-        new();
+    public WorldData Clone()
+    {
+        List<LevelDataContainer> levelDataContainersClone = new();
+        
+        foreach (var levelDataContainer in _levelDataContainers) 
+            levelDataContainersClone.Add(levelDataContainer.Clone());
+        
+        return new WorldData(levelDataContainersClone, LastSavedLevelType);
+    }
 
     public bool TryGetLevelDataFor(LevelType levelType, out LevelData levelData)
     {
@@ -32,7 +45,7 @@ public sealed class WorldData : ISaveData
     public void UpdateLevelDataFor(LevelType levelType, Level level)
     {
         var levelDataContainer = _levelDataContainers.FirstOrDefault(x => x.LevelType == levelType);
-        LevelData saveData = CreateLevelDataBy(level);
+        LevelData saveData = new LevelData(level.GetChunksDataList());
 
         if (levelDataContainer != null)
             levelDataContainer.UpdateLevelData(saveData);
@@ -46,18 +59,5 @@ public sealed class WorldData : ISaveData
     {
         var newLevelDataContainer = new LevelDataContainer(levelType, saveData);
         _levelDataContainers.Add(newLevelDataContainer);
-    }
-
-    private LevelData CreateLevelDataBy(Level level)
-    {
-        List<ChunkData> chunkDataList = new();
-
-        foreach (var chunk in level.Chunks)
-        {
-            ChunkData chunkData = new(chunk.ID, chunk.GetCropZonesDataList());
-            chunkDataList.Add(chunkData);
-        }
-
-        return new LevelData(chunkDataList);
     }
 }

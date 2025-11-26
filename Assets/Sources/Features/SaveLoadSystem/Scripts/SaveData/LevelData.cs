@@ -18,4 +18,7 @@ public sealed class LevelData
         chunkData = ChunksDataList.FirstOrDefault(x => x.ID == id);
         return chunkData != null;
     }
+    
+    public LevelData Clone() => 
+        new LevelData();
 }

@@ -1,4 +1,6 @@
-﻿public class SaveDataFactory : ISaveDataFactory
+﻿using System.Collections.Generic;
+
+public class SaveDataFactory : ISaveDataFactory
 {
     private readonly IStaticDataService _staticDataService;
 
@@ -13,8 +15,11 @@
         return new PlayerData(newPlayerDataConfig.InventoryData.Clone());
     }
 
-    public WorldData CreateNewWorldData() =>
-        new();
+    public WorldData CreateNewWorldData()
+    {
+        var newWorldDataConfig = _staticDataService.GameConfig.NewProgressConfig.NewWorldDataConfig;
+        return new WorldData(new List<LevelDataContainer>(), newWorldDataConfig.StartLevelType);
+    }
 
     public WalletData CreateNewWalletData()
     {
