@@ -9,6 +9,12 @@ public sealed class ChunkData
     [field: SerializeField] public String ID { get; private set; }
     [field: SerializeField] public List<CropZoneData> CropZonesDataList { get; private set; }
     
+    public ChunkData(String id, List<CropZoneData> cropZoneDataList)
+    {
+        ID = id;
+        CropZonesDataList = cropZoneDataList;
+    }
+    
     public bool TryGetCropZoneDataBy(string id, out CropZoneData cropZoneData)
     {
         cropZoneData = CropZonesDataList.FirstOrDefault(x => x.ID == id);

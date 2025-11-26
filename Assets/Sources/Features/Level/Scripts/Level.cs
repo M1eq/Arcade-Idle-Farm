@@ -21,4 +21,17 @@ public partial class Level : MonoBehaviour
                 chunk.RestoreBy(chunkData);
         }
     }
+    
+    public List<ChunkData> GetChunksDataList()
+    {
+        List<ChunkData> chunksDataList = new();
+        
+        foreach (var chunk in Chunks)
+        {
+            ChunkData chunkData = new(chunk.GetCropZonesDataList());
+            chunksDataList.Add(chunkData);
+        }
+        
+        return chunksDataList;
+    }
 }

@@ -26,4 +26,17 @@ public class Chunk : MonoBehaviour
                 cropZone.RestoreBy(cropZoneData);
         }
     }
+    
+    public List<CropZoneData> GetCropZonesDataList()
+    {
+        List<CropZoneData> cropZonesDataList = new();
+        
+        foreach (var cropZone in CropZones)
+        {
+            CropZoneData cropTileData = new(cropZone.ID, cropZone.GetCropTilesDataList());
+            cropZonesDataList.Add(cropTileData);
+        }
+        
+        return cropZonesDataList;
+    }
 }

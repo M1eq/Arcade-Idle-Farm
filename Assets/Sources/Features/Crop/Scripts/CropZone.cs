@@ -32,6 +32,19 @@ public class CropZone : MonoBehaviour
             //если cropTile нет в data, восстанавливать ему минимальное состояние других тайлов
         }
     }
+
+    public List<CropTileData> GetCropTilesDataList()
+    {
+        List<CropTileData> cropTilesDataList = new();
+        
+        foreach (var cropTile in _cropTiles)
+        {
+            CropTileData cropTileData = new(cropTile.ID, cropTile.CropTileState);
+            cropTilesDataList.Add(cropTileData);
+        }
+        
+        return cropTilesDataList;
+    }
     
     public void Initialize(CropZoneConfig cropZoneConfig) =>
         _config = cropZoneConfig;
@@ -53,27 +66,7 @@ public class CropZone : MonoBehaviour
 
     private void OnCropTileHarvested(CropTile harvestedTile) => 
         HandleCropTileInteraction(harvestedTile, _harvestedCropTiles, CropZoneInteractionType.Seed);
-
-    private void SubscribeUpdates()
-    {
-        foreach (CropTile cropTile in _cropTiles)
-        {
-            cropTile.Sowed += OnCropTileSowed;
-            cropTile.Watered += OnCropTileWatered;
-            cropTile.Harvested += OnCropTileHarvested;
-        }
-    }
-
-    private void CleanUp()
-    {
-        foreach (CropTile cropTile in _cropTiles)
-        {
-            cropTile.Sowed -= OnCropTileSowed;
-            cropTile.Watered -= OnCropTileWatered;
-            cropTile.Harvested -= OnCropTileHarvested;
-        }
-    }
-
+    
     private void InitializeCropTiles()
     {
         foreach (CropTile cropTile in _cropTiles)
@@ -91,6 +84,26 @@ public class CropZone : MonoBehaviour
             interactedTiles.Clear();
             InteractionType = nextInteractionType;
             InteractionFinished?.Invoke();
+        }
+    }
+    
+    private void SubscribeUpdates()
+    {
+        foreach (CropTile cropTile in _cropTiles)
+        {
+            cropTile.Sowed += OnCropTileSowed;
+            cropTile.Watered += OnCropTileWatered;
+            cropTile.Harvested += OnCropTileHarvested;
+        }
+    }
+
+    private void CleanUp()
+    {
+        foreach (CropTile cropTile in _cropTiles)
+        {
+            cropTile.Sowed -= OnCropTileSowed;
+            cropTile.Watered -= OnCropTileWatered;
+            cropTile.Harvested -= OnCropTileHarvested;
         }
     }
 }

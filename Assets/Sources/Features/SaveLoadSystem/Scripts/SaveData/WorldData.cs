@@ -8,7 +8,7 @@ public sealed class WorldData : ISaveData
 {
     [SerializeField] private List<LevelDataContainer> _levelDataContainers = new();
     [field: SerializeField] public LevelType LastSavedLevelType { get; private set; } = LevelType.ShowcaseLevel;
-
+    
     public bool EqualsData(WorldData data) =>
         true;
 
@@ -32,7 +32,7 @@ public sealed class WorldData : ISaveData
     public void UpdateLevelDataFor(LevelType levelType, Level level)
     {
         var levelDataContainer = _levelDataContainers.FirstOrDefault(x => x.LevelType == levelType);
-        LevelData saveData = GetLevelDataBy(level);
+        LevelData saveData = CreateLevelDataBy(level);
 
         if (levelDataContainer != null)
             levelDataContainer.UpdateLevelData(saveData);
@@ -48,6 +48,16 @@ public sealed class WorldData : ISaveData
         _levelDataContainers.Add(newLevelDataContainer);
     }
 
-    private LevelData GetLevelDataBy(Level level) =>
-        new();
+    private LevelData CreateLevelDataBy(Level level)
+    {
+        List<ChunkData> chunkDataList = new();
+
+        foreach (var chunk in level.Chunks)
+        {
+            ChunkData chunkData = new(chunk.ID, chunk.GetCropZonesDataList());
+            chunkDataList.Add(chunkData);
+        }
+
+        return new LevelData(chunkDataList);
+    }
 }
