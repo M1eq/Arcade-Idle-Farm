@@ -22,6 +22,8 @@ public class CropZone : MonoBehaviour
 
     public void RestoreBy(CropZoneData cropZoneData)
     {
+        InitializeCropTiles();
+        
         InteractionType = cropZoneData.InteractionType;
         
         foreach (var cropTile in _cropTiles)

@@ -19,6 +19,13 @@ public sealed class LevelData
         return chunkData != null;
     }
     
-    public LevelData Clone() => 
-        new LevelData();
+    public LevelData CloneData()
+    {
+        List<ChunkData> newChunksDataList = new();
+
+        foreach (var chunkData in ChunksDataList) 
+            newChunksDataList.Add(chunkData.CloneData());
+        
+        return new LevelData(newChunksDataList);
+    }
 }

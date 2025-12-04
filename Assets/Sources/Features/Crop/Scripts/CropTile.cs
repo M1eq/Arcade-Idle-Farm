@@ -1,4 +1,3 @@
-using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -50,11 +49,8 @@ public class CropTile : MonoBehaviour
                 break;
             
             case CropTileState.Watered:
-                Water();
+                Water().Forget();
                 break;
-            
-            default:
-                throw new ArgumentOutOfRangeException();
         }
     }
 
@@ -68,8 +64,11 @@ public class CropTile : MonoBehaviour
         Sowed?.Invoke(this);
     }
 
-    public void Water()
+    public async UniTask Water()
     {
+        if (_plant == null)
+            await Sow();
+        
         CropTileState = CropTileState.Watered;
 
         _plant.ScaleToWatered();

@@ -33,7 +33,9 @@ public class Chunk : MonoBehaviour
         
         foreach (var cropZone in CropZones)
         {
-            CropZoneData cropTileData = new(cropZone.ID, cropZone.GetCropTilesDataList());
+            CropZoneData cropTileData = new(
+                cropZone.ID, cropZone.InteractionType, cropZone.GetCropTilesDataList());
+            
             cropZonesDataList.Add(cropTileData);
         }
         

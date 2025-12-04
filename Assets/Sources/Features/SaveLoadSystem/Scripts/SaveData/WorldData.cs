@@ -14,16 +14,16 @@ public sealed class WorldData : ISaveData
         _levelDataContainers = levelDataContainers;
         LastSavedLevelType = lastSavedLevelType;
     }
-    
-    public bool EqualsData(WorldData data) =>
-        true;
+
+    public bool EqualsData(WorldData data) => 
+        false;
 
     public WorldData Clone()
     {
         List<LevelDataContainer> levelDataContainersClone = new();
         
         foreach (var levelDataContainer in _levelDataContainers) 
-            levelDataContainersClone.Add(levelDataContainer.Clone());
+            levelDataContainersClone.Add(levelDataContainer.CloneData());
         
         return new WorldData(levelDataContainersClone, LastSavedLevelType);
     }

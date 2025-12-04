@@ -13,9 +13,9 @@ public sealed class LevelDataContainer
         LevelData = levelData;
     }
     
-    public LevelDataContainer Clone()
+    public LevelDataContainer CloneData()
     {
-        LevelData levelDataClone = LevelData.Clone();
+        LevelData levelDataClone = LevelData.CloneData();
         return new LevelDataContainer(LevelType, levelDataClone);
     }
     

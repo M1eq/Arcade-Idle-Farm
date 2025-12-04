@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class Water : MonoBehaviour
@@ -7,7 +8,7 @@ public class Water : MonoBehaviour
         if (other.TryGetComponent(out CropTile cropTile))
         {
             if (cropTile.CropTileState == CropTileState.Sowed)
-                cropTile.Water();
+                cropTile.Water().Forget();
         }
     }
 }

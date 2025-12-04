@@ -12,4 +12,7 @@ public sealed class CropTileData
         ID = id;
         CropTileState = cropTileState;
     }
+
+    public CropTileData CloneData() => 
+        new(ID, CropTileState);
 }

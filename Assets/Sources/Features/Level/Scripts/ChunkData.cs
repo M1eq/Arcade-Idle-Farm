@@ -20,4 +20,14 @@ public sealed class ChunkData
         cropZoneData = CropZonesDataList.FirstOrDefault(x => x.ID == id);
         return cropZoneData != null;
     }
+
+    public ChunkData CloneData()
+    {
+        List<CropZoneData> newCropZonesDataList = new();
+
+        foreach (var cropZoneData in CropZonesDataList) 
+            newCropZonesDataList.Add(cropZoneData.CloneData());
+        
+        return new ChunkData(ID, newCropZonesDataList); 
+    }
 }
