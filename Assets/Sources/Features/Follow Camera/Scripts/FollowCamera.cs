@@ -7,9 +7,13 @@ public class FollowCamera : MonoBehaviour
 
     [SerializeField] private CinemachineCamera _cinemachineCamera;
     [SerializeField] private CinemachineFollow _cinemachineFollow;
+    [SerializeField] private CinemachineRotationComposer _cinemachineRotationComposer;
 
     public void SetTarget(Transform target) => 
         _cinemachineCamera.Follow = target;
+
+    public void SetTrackOffset(Vector3 trackOffset) => 
+        _cinemachineRotationComposer.TargetOffset = trackOffset;
 
     public void UpdateZoom(Vector3 zoom, float speed)
     {

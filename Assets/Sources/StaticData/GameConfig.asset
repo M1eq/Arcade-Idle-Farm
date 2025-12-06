@@ -23,6 +23,7 @@ MonoBehaviour:
       <IdleSpeedMultiplier>k__BackingField: 1
       <RunSpeedMultiplier>k__BackingField: 1.4
     <FollowCameraConfig>k__BackingField:
+      <TrackOffset>k__BackingField: {x: 0, y: 1, z: 0}
       <ZoomSpeed>k__BackingField: 2
       <IdleZoom>k__BackingField: {x: 0, y: 9, z: -9}
       <MoveZoom>k__BackingField: {x: 0, y: 14, z: -14}
@@ -30,6 +31,8 @@ MonoBehaviour:
       <PositionReference>k__BackingField: _PlayerPosition
       <BendingTargets>k__BackingField:
       - {fileID: 2100000, guid: 7b72e3d58d4447e40ba700c5849a066a, type: 2}
+    <HarvestAbilityConfig>k__BackingField:
+      <HarvestRadius>k__BackingField: 1
   <CropZoneConfig>k__BackingField:
     <CropTileConfig>k__BackingField:
       <DefaultColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
@@ -47,3 +50,5 @@ MonoBehaviour:
     <NewPlayerDataConfig>k__BackingField:
       <InventoryData>k__BackingField:
         <ItemsDataList>k__BackingField: []
+    <NewWorldDataConfig>k__BackingField:
+      <StartLevelType>k__BackingField: 0

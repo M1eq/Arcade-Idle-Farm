@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cinemachineCamera: {fileID: 3932883136509602453}
   _cinemachineFollow: {fileID: 226135492338519429}
+  _cinemachineRotationComposer: {fileID: 3364388979126235506}
 --- !u!114 &3195508792687750844
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -77,5 +77,6 @@ public class GameFactory : IGameFactory
 
         followCameraUpdater.Initialize(followCameraConfig);
         followCamera.SetTarget(followTarget);
+        followCamera.SetTrackOffset(followCameraConfig.TrackOffset);
     }
 }
