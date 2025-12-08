@@ -40,43 +40,32 @@ public class CropTile : MonoBehaviour
         _config = config;
     }
 
-    public void RestoreBy(CropTileData cropTileData)
+    public void RestoreTo(CropTileState state)
     {
-        switch (cropTileData.CropTileState)
+        switch (state)
         {
             case CropTileState.Sowed:
-                Sow().Forget();
+                ApplySowLogic().Forget();
                 break;
             
             case CropTileState.Watered:
-                Water().Forget();
+                ApplyWaterLogic().Forget();
                 break;
         }
     }
 
     public async UniTask Sow()
     {
-        CropTileState = CropTileState.Sowed;
-
-        _plant = await _iPlantFactory.Create(_plantType, transform);
-        _plant.ScaleToSeed();
-
+        await ApplySowLogic();
         Sowed?.Invoke(this);
     }
-
+    
     public async UniTask Water()
     {
-        if (_plant == null)
-            await Sow();
-        
-        CropTileState = CropTileState.Watered;
-
-        _plant.ScaleToWatered();
-        _colorChanger.ChangeColorFor(_mesh, _config.WateredColor, _config.WateredDuration);
-
+        await ApplyWaterLogic();
         Watered?.Invoke(this);
     }
-
+    
     public void Harvest()
     {
         PlantStaticData plantData = _staticData.GetPlantConfig(_plantType);
@@ -91,5 +80,24 @@ public class CropTile : MonoBehaviour
         CropTileState = CropTileState.Empty;
 
         Harvested?.Invoke(this);
+    }
+    
+    private async UniTask ApplySowLogic()
+    {
+        CropTileState = CropTileState.Sowed;
+
+        _plant = await _iPlantFactory.Create(_plantType, transform);
+        _plant.ScaleToSeed();
+    }
+    
+    private async UniTask ApplyWaterLogic()
+    {
+        if (_plant == null)
+            await ApplySowLogic();
+        
+        CropTileState = CropTileState.Watered;
+
+        _plant.ScaleToWatered();
+        _colorChanger.ChangeColorFor(_mesh, _config.WateredColor, _config.WateredDuration);
     }
 }
