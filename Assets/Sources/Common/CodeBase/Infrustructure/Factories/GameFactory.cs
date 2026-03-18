@@ -38,7 +38,7 @@ public class GameFactory : IGameFactory
 
         player.Initialize(playerConfig);
 
-        var movement = player.GetComponent<PlayerMovement>();
+        var movement = player.GetComponent<CharacterMovement>();
         movement.Initialize(playerConfig.MovementConfig);
 
         var animator = player.GetComponent<MovementAnimationUpdater>();

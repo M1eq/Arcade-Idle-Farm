@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class PlayerAnimatorConfig
+public class CharacterAnimatorConfig
 {
     [field: SerializeField] public float CrossFadeDuration { get; private set; } = 0.15f;
     [field: SerializeField] public float IdleSpeedMultiplier { get; private set; } = 1f;

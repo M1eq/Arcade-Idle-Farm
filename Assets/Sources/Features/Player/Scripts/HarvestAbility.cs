@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HarvestAbility : MonoBehaviour, IAbility
 {
-    [SerializeField] private PlayerAnimator _animator;
+    [SerializeField] private CharacterAnimator _animator;
     [SerializeField] private Transform _sickle;
     [SerializeField] private LayerMask _mask;
     

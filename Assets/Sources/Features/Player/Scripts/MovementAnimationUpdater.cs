@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class MovementAnimationUpdater : MonoBehaviour
 {
-    [SerializeField] private PlayerAnimator _playerAnimator;
+    [FormerlySerializedAs("_playerAnimator")] [SerializeField] private CharacterAnimator _characterAnimator;
 
     private IInputService _inputService;
-    private PlayerAnimatorConfig _config;
+    private CharacterAnimatorConfig _config;
     
     [Inject]
     public void Construct(IInputService inputService)
@@ -14,8 +15,8 @@ public class MovementAnimationUpdater : MonoBehaviour
         _inputService = inputService;
     }
     
-    public void Initialize(PlayerAnimatorConfig playerAnimatorConfig) => 
-        _config = playerAnimatorConfig;
+    public void Initialize(CharacterAnimatorConfig characterAnimatorConfig) => 
+        _config = characterAnimatorConfig;
     
     private void Update() => 
         UpdateMovementAnimation();
@@ -25,9 +26,9 @@ public class MovementAnimationUpdater : MonoBehaviour
         bool isMoving = _inputService.Direction.magnitude > 0;
         float moveSpeedMultiplier = isMoving ? _config.RunSpeedMultiplier : _config.IdleSpeedMultiplier;
         
-        if (isMoving) _playerAnimator.LaunchRunAnimation(_config.CrossFadeDuration);
-        else _playerAnimator.LaunchIdleAnimation(_config.CrossFadeDuration);
+        if (isMoving) _characterAnimator.LaunchRunAnimation(_config.CrossFadeDuration);
+        else _characterAnimator.LaunchIdleAnimation(_config.CrossFadeDuration);
         
-        _playerAnimator.SetMovementAnimationSpeed(moveSpeedMultiplier);
+        _characterAnimator.SetMovementAnimationSpeed(moveSpeedMultiplier);
     }
 }

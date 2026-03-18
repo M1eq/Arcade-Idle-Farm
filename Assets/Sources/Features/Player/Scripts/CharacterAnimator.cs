@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerAnimator : MonoBehaviour
+public class CharacterAnimator : MonoBehaviour
 {
     private const int SowLayerIndex = 1;
     private const int WaterLayerIndex = 2;

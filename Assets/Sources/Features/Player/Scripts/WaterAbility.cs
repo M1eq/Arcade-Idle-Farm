@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WaterAbility : MonoBehaviour, IAbility
 {
-    [SerializeField] private PlayerAnimator _animator;
+    [SerializeField] private CharacterAnimator _animator;
     [SerializeField] private ParticleSystem _waterParticle;
     
     public void Apply()

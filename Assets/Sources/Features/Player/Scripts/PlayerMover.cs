@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class PlayerMover : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement _playerMovement;
+    [FormerlySerializedAs("_playerMovement")] [SerializeField] private CharacterMovement _characterMovement;
     
     private IInputService _inputService;
 
@@ -17,5 +18,5 @@ public class PlayerMover : MonoBehaviour
         ApplyMoveDirection();
     
     private void ApplyMoveDirection() => 
-        _playerMovement.MoveAt(_inputService.Direction);
+        _characterMovement.MoveAt(_inputService.Direction);
 }

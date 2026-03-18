@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private Transform _rendererTransform;
     
-    private PlayerMovementConfig _config;
+    private CharacterMovementConfig _config;
 
-    public void Initialize(PlayerMovementConfig config) => 
+    public void Initialize(CharacterMovementConfig config) => 
         _config = config;
 
     public void MoveAt(Vector3 direction)

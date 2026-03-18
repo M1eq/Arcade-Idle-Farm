@@ -2,7 +2,7 @@
 
 public class SowAbility : MonoBehaviour, IAbility
 {
-    [SerializeField] private PlayerAnimator _animator;
+    [SerializeField] private CharacterAnimator _animator;
     
     public void Apply() => 
         _animator.LaunchSowAnimation();
