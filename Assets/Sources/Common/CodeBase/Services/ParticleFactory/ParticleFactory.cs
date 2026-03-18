@@ -10,14 +10,20 @@ public class ParticleFactory : IParticleFactory
         _assetProvider = assetProvider;
     }
 
-    public async UniTask<ParticleSystem> CreateHarvestCornParticle(Transform parent, int cornAmount)
+    public async UniTask<ParticleSystem> CreateHarvestCornParticle(Transform parent, int cornAmount) => 
+        await CreatePlantParticle(parent, cornAmount, AssetPath.HarvestCornParticle);
+    
+    public async UniTask<ParticleSystem> CreateHarvestCarrotParticle(Transform parent, int carrotAmount) => 
+        await CreatePlantParticle(parent, carrotAmount, AssetPath.HarvestCarrotParticle);
+
+    private async UniTask<ParticleSystem> CreatePlantParticle(Transform parent, int cornAmount, string assetPath)
     {
-        GameObject cornParticlePrefab = await _assetProvider.Load<GameObject>(AssetPath.HarvestCornParticle);
-        GameObject cornParticle = Object.Instantiate(cornParticlePrefab, parent);
+        GameObject plantParticlePrefab = await _assetProvider.Load<GameObject>(assetPath);
+        GameObject plantParticle = Object.Instantiate(plantParticlePrefab, parent);
         
-        ParticleSystem cornParticleSystem = cornParticle.GetComponent<ParticleSystem>();
-        cornParticleSystem.emission.SetBurst(0, new ParticleSystem.Burst(0f, cornAmount));
+        ParticleSystem particleSystem = plantParticle.GetComponent<ParticleSystem>();
+        particleSystem.emission.SetBurst(0, new ParticleSystem.Burst(0f, cornAmount));
         
-        return cornParticleSystem;
+        return particleSystem;
     }
 }

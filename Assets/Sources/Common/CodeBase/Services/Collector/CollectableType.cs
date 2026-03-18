@@ -1,4 +1,5 @@
 ﻿public enum CollectableType
 {
-    Corn = 1
+    Corn = 0,
+    Carrot = 1
 }

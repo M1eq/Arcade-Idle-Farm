@@ -17,9 +17,24 @@ public class Collector : ICollector
         switch (type)
         {
             case CollectableType.Corn:
-                 _particleFactory.CreateHarvestCornParticle(parent, value).Forget();
-                 _inventory.Add(PlantType.Corn, value);
+                 CollectCorn(parent, value);
+                 break;
+            
+            case CollectableType.Carrot:
+                CollectCarrot(parent, value);
                 break;
         }
+    }
+    
+    private void CollectCorn(Transform parent, int value)
+    {
+        _particleFactory.CreateHarvestCornParticle(parent, value).Forget();
+        _inventory.Add(PlantType.Corn, value);
+    }
+    
+    private void CollectCarrot(Transform parent, int value)
+    {
+        _particleFactory.CreateHarvestCarrotParticle(parent, value).Forget();
+        _inventory.Add(PlantType.Carrot, value);
     }
 }

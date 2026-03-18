@@ -20,6 +20,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a0fc3072ca96ec4283af64115b956a1
+    m_Address: Carrot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34235d735fc0fb74eba42ea0d68f7dc8
+    m_Address: HarvestCarrotParticle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 444ca4afb0ca5f44591f7f6354d3062a
     m_Address: GameConfig
     m_ReadOnly: 0

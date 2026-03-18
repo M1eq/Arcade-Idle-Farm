@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69113a1a908a5ba49beee34f4caf16f8, type: 3}
-  m_Name: CornStaticData
+  m_Name: CarrotStaticData
   m_EditorClassIdentifier: 
-  <PlantType>k__BackingField: 0
-  <CollectableType>k__BackingField: 0
+  <PlantType>k__BackingField: 1
+  <CollectableType>k__BackingField: 1
   <Icon>k__BackingField: {fileID: 21300000, guid: 95472c809f10743c5a778a05539cda2d, type: 3}
   <Prefab>k__BackingField:
-    m_AssetGUID: 530671a6dcce5b84992a7417b0d91c86
+    m_AssetGUID: 1a0fc3072ca96ec4283af64115b956a1
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <SellPrice>k__BackingField: 2
+  <SellPrice>k__BackingField: 5
   <LootAmounts>k__BackingField: {x: 1, y: 3}
   <ScaleConfig>k__BackingField:
     <SeedScaleDuration>k__BackingField: 1
     <WateredScaleDuration>k__BackingField: 1
-    <SeedScale>k__BackingField: {x: 0.1, y: 7, z: 0.1}
-    <WateredScale>k__BackingField: {x: 0.4, y: 15, z: 0.4}
+    <SeedScale>k__BackingField: {x: 0.5, y: 2, z: 0.5}
+    <WateredScale>k__BackingField: {x: 0.5, y: 25, z: 0.5}

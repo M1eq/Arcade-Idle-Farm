@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6907837874640170943}
   - component: {fileID: 8849073317373572734}
   m_Layer: 0
-  m_Name: HarvestCornParticle
+  m_Name: HarvestCarrotParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1046,10 +1046,10 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
-          value: 0
+          time: 0.021095276
+          value: 0.57647324
           inSlope: 0
-          outSlope: 1
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
@@ -1058,7 +1058,7 @@ ParticleSystem:
           time: 1
           value: 1
           inSlope: 1
-          outSlope: 0
+          outSlope: 1
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
@@ -4884,7 +4884,7 @@ ParticleSystemRenderer:
   m_VertexStreams: 00010304
   m_UseCustomTrailVertexStreams: 0
   m_TrailVertexStreams: 00010304
-  m_Mesh: {fileID: -3187686288736663950, guid: 01f35796868bc5548b7f6c19887fb53c, type: 3}
+  m_Mesh: {fileID: -8334712894361917868, guid: e0d136a1dd3e95d4fae769134e3c5536, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -6259,8 +6259,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.90751576, b: 0.3820755, a: 1}
-        key1: {r: 0.56481284, g: 0.7176471, b: 0.26666668, a: 0}
+        key0: {r: 1, g: 0.6269129, b: 0.3803922, a: 1}
+        key1: {r: 0.7176471, g: 0.47530928, b: 0.26666668, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -9731,7 +9731,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d61cf8cbd344c407f8a59abf4c6192cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

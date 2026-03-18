@@ -52,6 +52,7 @@ MonoBehaviour:
   <PlayerSpawnPoint>k__BackingField: {fileID: 4826193422439333213}
   <Chunks>k__BackingField:
   - {fileID: 4875150239643585769}
+  - {fileID: 2470724825680397791}
 --- !u!1 &8510879523254574788
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,35 +94,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 154111713439284688, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_Chunk1_96966e01620a6b4418793fcf011bcb83
+      value: ShowcaseLevelPrefab_Chunk1_8f35c8f8e7e37fe448d7ca7c2ceec169
       objectReference: {fileID: 0}
     - target: {fileID: 321522226180299437, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_79973cd4cb7b17b45b76fe4a47e2c317
+      value: ShowcaseLevelPrefab_CropTile_77cb4c01714712944b67a99deedcfddf
       objectReference: {fileID: 0}
     - target: {fileID: 1579682356373949102, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropZone_7c7c19506cd151847b1fb45d22b7a711
+      value: ShowcaseLevelPrefab_CropZone_93729e098ec8b5e4c8ade9469ff5deb4
       objectReference: {fileID: 0}
     - target: {fileID: 2638640226847355976, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_e18997031784a254aae8ec63f0d0bca9
+      value: ShowcaseLevelPrefab_CropTile_d9d77183d3df3f8428bbd497dc743d85
       objectReference: {fileID: 0}
     - target: {fileID: 3425487360387474107, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_58228e5aa46bbb34dab43533383f994f
+      value: ShowcaseLevelPrefab_CropTile_01307f2f7bfac834a96b4cac4a6c6ddf
       objectReference: {fileID: 0}
     - target: {fileID: 3519690261104758013, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_a07fc1227a2e3cd46a5c11626debd3d9
+      value: ShowcaseLevelPrefab_CropTile_58ab18890c5509246b5f266b28c748f0
       objectReference: {fileID: 0}
     - target: {fileID: 4057404639024931032, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_d4253c47d0bb55a43a6db19a6364be29
+      value: ShowcaseLevelPrefab_CropTile_15dd6576d70d49b4d9e4765414ec86a1
       objectReference: {fileID: 0}
     - target: {fileID: 4538839732845044574, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_b835c729f5031dc4fb002e03fcdaf0be
+      value: ShowcaseLevelPrefab_CropTile_74a1ee3884cb5914c930f4d38236f871
       objectReference: {fileID: 0}
     - target: {fileID: 5279148661784748496, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <CropZones>k__BackingField.Array.size
@@ -185,39 +186,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5764148283179334962, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_cbd5881c719e71342b8c05c022aaf09f
+      value: ShowcaseLevelPrefab_CropTile_e62300a1ad43595419d5959a0bd86433
       objectReference: {fileID: 0}
     - target: {fileID: 6083757123559519197, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_39b134a7e1e6644438d8659cf9fab585
+      value: ShowcaseLevelPrefab_CropTile_7f7b33ed02a5cc947b4da3dff2fc898a
       objectReference: {fileID: 0}
     - target: {fileID: 6146444495127121788, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_7fbeb8dc61eb4844aafe6f920dacfb0f
+      value: ShowcaseLevelPrefab_CropTile_396b234c136e9eb4a82a0262761134ee
       objectReference: {fileID: 0}
     - target: {fileID: 7050523792043187759, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_d30b01f0725705e40b3e2de882577e9f
+      value: ShowcaseLevelPrefab_CropTile_6d226b69ba3b57b49972ca8c98aa9ccc
       objectReference: {fileID: 0}
     - target: {fileID: 7108818648318881469, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_77f8f9ffd57bfb248be8d433becaaddd
+      value: ShowcaseLevelPrefab_CropTile_47e7e04ec677dbb4e9fee6aaa7e2fe63
       objectReference: {fileID: 0}
     - target: {fileID: 7198891390794454772, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_cce1c52aeda6ecd4eb3724b3f0837aee
+      value: ShowcaseLevelPrefab_CropTile_8bff0aa00eec3ea4f958d28c89f4b59d
       objectReference: {fileID: 0}
     - target: {fileID: 7427998992383512443, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_aea9e39786038c347ab7d4d8dfb32c79
+      value: ShowcaseLevelPrefab_CropTile_4606ef7df44814741bcdb511697f042c
       objectReference: {fileID: 0}
     - target: {fileID: 7615702994123774166, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_b659cd84b0f09154c823adde6b6ac311
+      value: ShowcaseLevelPrefab_CropTile_76be680bd7c07f5418a7a03e06b08010
       objectReference: {fileID: 0}
     - target: {fileID: 8035792203686028071, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_6e1f11645d09da14b99edc6161447bff
+      value: ShowcaseLevelPrefab_CropTile_e2622d416265b9544a4c71bf6cf95bf8
       objectReference: {fileID: 0}
     - target: {fileID: 9003288323450486304, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: m_Name
@@ -229,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9134062012521784541, guid: 644fc51906b89ff42a259cc3a6664cf5, type: 3}
       propertyPath: <Id>k__BackingField
-      value: ShowcaseLevelPrefab_CropTile_e890ba9fbbca18b45b293f15ff5bc005
+      value: ShowcaseLevelPrefab_CropTile_e221e68dc03190a488660d5848c4fcd3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -364,6 +365,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6449610678251746638}
     m_Modifications:
+    - target: {fileID: 154111713439284688, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_Chunk2_0758b06eb8cd6404899decafbb24a845
+      objectReference: {fileID: 0}
+    - target: {fileID: 321522226180299437, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_db963fc95700c934b956d5388f2c8c38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579682356373949102, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropZone_11dbdc53bd280134592c63dec06d59c5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638640226847355976, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_543fa6de5f6a7664c8d57898ee4c7fa7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425487360387474107, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_fcc70b82a57ea704cb9c764679689ce2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519690261104758013, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_77a80a5839539f144bd7d8dac1351102
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057404639024931032, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_42cb3f3bb25b9d14c927ffc3b123fe04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538839732845044574, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_7a9e1dc87ae2b974a96523520fc51b73
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279148661784748496, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <CropZones>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279148661784748496, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: '<CropZones>k__BackingField.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4153266636465018979}
+    - target: {fileID: 5279148661784748496, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <PlantSellZones>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279148661784748496, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: '<PlantSellZones>k__BackingField.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5176173436129816077}
     - target: {fileID: 5347589938304823100, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20
@@ -404,9 +453,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5764148283179334962, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_dcc80ac04d1e2ba4280e190c7aa7b9b6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5956525763983932524, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: _plantType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083757123559519197, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_13fe8bd6e4d8002499e79663e8949540
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146444495127121788, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_71142d2751462c1479097b9c1aa1e6cc
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050523792043187759, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_2cdf645be16b8fa4098b62d1ff54f494
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108818648318881469, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_a81faaa91727ed3459aee779bda46050
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198891390794454772, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_b2a8cbcdbf6b66c47af80cd5ca51d41e
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427998992383512443, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_d2ba79d9159999e4684170a34d4ab0e4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615702994123774166, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_85842ef5607e315408ab83105eb3c429
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035792203686028071, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_52a52dca255626048b13c638b269b61b
+      objectReference: {fileID: 0}
     - target: {fileID: 9003288323450486304, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
       propertyPath: m_Name
       value: Chunk2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9134062012521784541, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+      propertyPath: <Id>k__BackingField
+      value: ShowcaseLevelPrefab_CropTile_446443cbf3925cc40b0f415d263094dd
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -418,3 +511,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5347589938304823100, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
   m_PrefabInstance: {fileID: 7713129730186404879}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2470724825680397791 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5279148661784748496, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+  m_PrefabInstance: {fileID: 7713129730186404879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a5a8bd0a655e14a962c9f51f38f7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4153266636465018979 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5956525763983932524, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+  m_PrefabInstance: {fileID: 7713129730186404879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d1a49f160ca1a4385c1870d34f8c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5176173436129816077 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3233581025176537602, guid: 1dd8191706302454e8f18f54908f9267, type: 3}
+  m_PrefabInstance: {fileID: 7713129730186404879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0b8240d2efba44eaef61ff50934beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

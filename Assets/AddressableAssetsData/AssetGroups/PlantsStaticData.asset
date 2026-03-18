@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - PlantStaticData
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8042f6dcb47d0645b884a7d4c24a1da
+    m_Address: CarrotStaticData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PlantStaticData
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6f5997821b0595d408ed3afbae1aef51, type: 2}
   m_SchemaSet:
